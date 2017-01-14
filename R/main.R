@@ -2,31 +2,34 @@
 #'
 #' @export
 spambase.analysis <- function(){
+  # output folder for all the created information (text, tables & plots)
+  output_folder = "../out"
+
   message("1. Exploratory data analysis")
-  exploratory.data_analysis()
+  exploratory_data_analysis()
   cat("\n")
 
   message("2. Normality check")
-  # function
+  normality.check()
   cat("\n")
 
   message("3. Transformation to normality")
-  # function
+  normality.transform()
   cat("\n")
 
   message("4. Outlier detection")
-  # function
+  outlier_detection()
   cat("\n")
 
   message("5. Principal Component Analysis")
-  # function
+  dim.pca()
   cat("\n")
 
   message("6. Multidimensional scaling")
-  # function
+  dim.mds()
   cat("\n")
 
   message("7. Fuzzy C-Means clustering")
-  # function
+  clustering()
   cat("\n")
 }
