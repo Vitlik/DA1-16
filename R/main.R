@@ -2,8 +2,6 @@
 #'
 #' @export
 spambase.analysis <- function(){
-  # output folder for all the created information (text, tables & plots)
-  output_folder = "../out"
 
   message("1. Exploratory data analysis")
   exploratory_data_analysis()
