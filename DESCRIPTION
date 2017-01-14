@@ -1,0 +1,22 @@
+Package: casestudy
+Type: Package
+Title: Analysis of a spambase dataset
+Version: 0.1
+Author: person("Hyowon", "An"),
+    person("Vitali", "Friesen"),
+    person("Lijin", "Han"),
+    person("Evelyn", "Navarrete"),
+    person("Xueying", "Wang")
+Maintainer: No maintainer<no@mail.com>
+Description: This package analyses the dataset from http://www.openml.org/d/44.
+    It represents a supervised dataset for spammail occurences and stores the flag
+    of spam or not spam and some attributes of the corresponding mails. These are
+    occurences of specific words and capital letters.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+    foreign,
+    ggplot2,
+    cluster
+RoxygenNote: 5.0.1
