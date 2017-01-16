@@ -3,7 +3,9 @@
 # output folder for all the created information (text, tables & plots)
 output_folder = "../out"
 
-#' @title Example Function
+
+
+#' @title Example Function for docu creation
 #'
 #' @description
 #' Example function for understanding documentation
@@ -18,6 +20,6 @@ output_folder = "../out"
 #'
 #' test.func(2,3)
 #' # 12
-test.func <- function(x, y){
+util.test.func <- function(x, y){
   return(x*x*y)
 }

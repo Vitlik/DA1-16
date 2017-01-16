@@ -1,0 +1,43 @@
+#' @title
+#' @description
+exploratory.data_analysis <- function(){
+  # structure the data into the groups it contains
+  exploratory.structure_data()
+
+  # create various plots for visual analysis
+  exploratory.create_plots()
+}
+
+#' @title Structure the spambase data
+#' @description
+exploratory.structure_data <- function(){
+  # environment variable which stores all structures data
+  stuff <- baseenv()
+
+  # continuous numeric values which describe the occurence of a word in \code{%}
+  stuff$word_freq <- spambase[,1:48]
+
+  # continuous numeric values which describe the occurence of a special character in \code{%}
+  stuff$char_freq <- spambase[,49:54]
+
+  # continuous numeric value which describe the average length of uninterrupted sequences of
+  #   capital letters in \code{%}
+  stuff$CAP.length_avg <- spambase[,55, drop = F]
+
+  # discret numeric value which describe the length of longest uninterrupted sequence of
+  #   capital letters
+  stuff$CAP.length_longest <- spambase[,56, drop = F]
+
+  # discret numeric value which describe the total number of capital letters in the e-mail
+  stuff$CAP.length_total <- spambase[,57, drop = F]
+
+  # denotes whether the e-mail was considered spam (1) or not (0)
+  stuff$classification <- spambase[,58, drop = F]
+  cat(stuff$CAP.length_total)
+}
+
+#' @title
+#' @description
+exploratory.create_plots <- function(){
+
+}
