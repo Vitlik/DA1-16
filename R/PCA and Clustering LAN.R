@@ -2,12 +2,10 @@
 # install.packages('ggfortify')
 # install.packages('methods')
 # install.packages('cluster')
-# install.packages('xlsx')
 library(ggplot2)
 library(ggfortify)
 library(methods)
 library(foreign)
-library(xlsx)
 library(cluster)
 
 raw.data<-read.arff(file = 'E:/OneDrive/WWU Münster/Data Analytics/DA1 Project/dataset_44_spambase_adjusted.arff')
@@ -19,7 +17,7 @@ dim(raw.data)
 cor.mar<-cor(raw.data[,1:48], method = 'pearson')
 
 # test the cor.mar in SPSS
-write.foreign(cor.mar, datafile = 'E:\\OneDrive\\WWU Münster\\Data Analytics\\DA1 Project\\DA1 Project\\cor.mar.txt', 
+write.foreign(cor.mar, datafile = 'E:\\OneDrive\\WWU Münster\\Data Analytics\\DA1 Project\\DA1 Project\\cor.mar.txt',
               codefile='E:\\OneDrive\\WWU Münster\\Data Analytics\\DA1 Project\\DA1 Project\\cor.mar.sps',package="SPSS")
 write.table(cor.mar, file = 'E:\\OneDrive\\WWU Münster\\Data Analytics\\DA1 Project\\DA1 Project\\cor.mar.txt', sep='\t')
 ################
@@ -87,12 +85,12 @@ autoplot(clara(data.PC, metric = 'euclidean', k=2))
 
 ## hierachical clustering
 
-methods = c("average", "single", "complete","ward.D") 
-opar = par(mfrow = c(2, 2)) 
-sapply(methods, function(method) { 
-  res.clust = hclust(dist(data.PC), method = method) 
-  plot(res.clust, main = sprintf("method: %s", method)) 
-  }) 
+methods = c("average", "single", "complete","ward.D")
+opar = par(mfrow = c(2, 2))
+sapply(methods, function(method) {
+  res.clust = hclust(dist(data.PC), method = method)
+  plot(res.clust, main = sprintf("method: %s", method))
+  })
 par(opar)
 
 ## K-means clustering
@@ -100,23 +98,23 @@ initial.centers<-matrix(c(-0.5,0,1.5,0.1),byrow = TRUE, ncol = 2L)
 
 k.cluster<-kmeans(data.PC, centers= initial.centers, algorithm = 'Lloyd',iter.max = 25)
 
-plotWSSVsK = function(data) { n = nrow(data) # determine possible numbers for K* 
+plotWSSVsK = function(data) { n = nrow(data) # determine possible numbers for K*
   Ks = seq(n - 1L)
-  # WSS for the actual data 
-  tot.wss = sapply(Ks, function(k) { 
+  # WSS for the actual data
+  tot.wss = sapply(Ks, function(k) {
   kmeans(data, centers = k, algorithm = "Lloyd", iter.max = 20)$tot.withinss
   })
-  # WSS for the uniformaly generated data 
+  # WSS for the uniformaly generated data
   unif.data = matrix(
-    runif(2 * n, min = min(data[, 1]), 
-    max = max(data[, 2])), ncol = 2) 
-  exp.tot.wss = sapply(Ks, function(k) { 
+    runif(2 * n, min = min(data[, 1]),
+    max = max(data[, 2])), ncol = 2)
+  exp.tot.wss = sapply(Ks, function(k) {
     kmeans(unif.data, centers = k)$tot.withinss })
-  # actually draw the plot 
-  plot(Ks, tot.wss, type = "b", col = "red", 
-       xlab = "Number of clusters", 
-       ylab = expression(W[k])) 
-  lines(Ks, exp.tot.wss, col = "blue") 
+  # actually draw the plot
+  plot(Ks, tot.wss, type = "b", col = "red",
+       xlab = "Number of clusters",
+       ylab = expression(W[k]))
+  lines(Ks, exp.tot.wss, col = "blue")
   points(Ks, exp.tot.wss, col = "blue")
 }
 
