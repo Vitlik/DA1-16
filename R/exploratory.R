@@ -33,11 +33,36 @@ exploratory.structure_data <- function(){
 
   # denotes whether the e-mail was considered spam (1) or not (0)
   stuff$classification <- spambase[,58, drop = F]
-  cat(stuff$CAP.length_total)
 }
 
 #' @title
 #' @description
 exploratory.create_plots <- function(){
+  # Write information about the structure of the data into a file
+  target <- file.path("out/1. Exploratory - str.txt")
+  file.create(target)
+  sink(target)
+    str(spambase)
+  sink()
 
+  # Write summary information of the data into a file
+  target <- file.path("out/1. Exploratory - summary.csv")
+  file.create(target)
+  write.csv2(summary(spambase), target)
+
+  #
+  pdf(file.path("out/1. Exploratory - Histograms.pdf"))
+  layout(matrix(1:(5 * ceiling(ncol(spambase[,1:20])/5)), ncol = 5, byrow = T))
+  sapply(names(spambase[,1:20]), function(name) {
+    hist(spambase[[name]], main = name,
+         #xlab = paste("p =", shapiro.test(spambase[[name]])),
+         col = ercis.red, col.axis = ercis.grey, col.lab = ercis.grey,
+         col.main = ercis.grey, col.sub = ercis.grey)
+  })
+  dev.off()
+
+  #
+  pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
+  corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
+  dev.off()
 }

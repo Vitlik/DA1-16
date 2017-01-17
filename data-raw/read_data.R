@@ -14,5 +14,15 @@ spambase <- spambase[!duplicated(spambase)]
 spambase$capital_run_length_longest <- as.integer(spambase$capital_run_length_longest)
 spambase$capital_run_length_total <- as.integer(spambase$capital_run_length_total)
 
+names(spambase)[1:57] <- c("make", "address", "all", "3d", "our", "over", "remove", "internet",
+                           "order", "mail", "receive", "will", "people", "report", "adresses",
+                           "free", "business", "email", "you", "credit", "your", "font", "000",
+                           "money", "hp", "hpl", "george", "650", "lab", "labs", "telnet", "857",
+                           "data", "415", "85", "technology", "1999", "parts", "pm", "direct",
+                           "cs", "meeting", "original", "project", "re", "edu", "table",
+                           "conference", ";", "+", "[", "!", "$", "#", "CAP_avg", "CAP_longest",
+                           "CAP_total")
+
 # write table to file for the package
 devtools::use_data(spambase, overwrite = T)
+
