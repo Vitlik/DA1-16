@@ -5,7 +5,7 @@ exploratory.data_analysis <- function(){
   exploratory.structure_data()
 
   # create various plots for visual analysis
-  exploratory.create_plots()
+  #exploratory.create_plots()
 }
 
 #' @title Structure the spambase data
