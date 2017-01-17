@@ -8,7 +8,7 @@ library(foreign)
 spambase <- read.arff(file = "data-raw/dataset_44_spambase_adjusted.arff")
 
 # remove duplicates as they distort the analysis
-spambase <- spambase[!duplicated(spambase)]
+spambase <- spambase[!duplicated(spambase),]
 
 # adjust datatype to original datatype which got lost during read
 spambase$capital_run_length_longest <- as.integer(spambase$capital_run_length_longest)
