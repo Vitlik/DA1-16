@@ -35,7 +35,7 @@ exploratory.structure_data <- function(){
   stuff$classification <- spambase[,58, drop = F]
 }
 
-#' @title
+#' @title create plots
 #' @description
 exploratory.create_plots <- function(){
   # Write information about the structure of the data into a file
