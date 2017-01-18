@@ -1,15 +1,17 @@
-#' @title
-#' @description
+
+
+#' @title Exploratory data analysis wrapper function
+#' @description This is a wrapper function for the whole exploratory data analysis step
 exploratory.data_analysis <- function(){
   # structure the data into the groups it contains
   exploratory.structure_data()
 
   # create various plots for visual analysis
-  #exploratory.create_plots()
+  exploratory.create_plots()
 }
 
 #' @title Structure the spambase data
-#' @description
+#' @description Create an environment variable \code{stuff} which
 exploratory.structure_data <- function(){
   # environment variable which stores all structures data
   stuff <- baseenv()
@@ -35,7 +37,7 @@ exploratory.structure_data <- function(){
   stuff$classification <- spambase[,58, drop = F]
 }
 
-#' @title create plots
+#' @title Create exploratory plots
 #' @description
 exploratory.create_plots <- function(){
   # Write information about the structure of the data into a file

@@ -6,4 +6,7 @@
 \usage{
 exploratory.structure_data()
 }
+\description{
+Create an environment variable \code{stuff} which
+}
 

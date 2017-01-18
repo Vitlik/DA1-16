@@ -2,7 +2,7 @@
 % Please edit documentation in R/exploratory.R
 \name{exploratory.create_plots}
 \alias{exploratory.create_plots}
-\title{create plots}
+\title{Create exploratory plots}
 \usage{
 exploratory.create_plots()
 }

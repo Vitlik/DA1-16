@@ -20,7 +20,7 @@ names(spambase)[1:57] <- c("make", "address", "all", "3d", "our", "over", "remov
                            "money", "hp", "hpl", "george", "650", "lab", "labs", "telnet", "857",
                            "data", "415", "85", "technology", "1999", "parts", "pm", "direct",
                            "cs", "meeting", "original", "project", "re", "edu", "table",
-                           "conference", ";", "+", "[", "!", "$", "#", "CAP_avg", "CAP_longest",
+                           "conference", ";", "(", "[", "!", "$", "#", "CAP_avg", "CAP_longest",
                            "CAP_total")
 
 # write table to file for the package
