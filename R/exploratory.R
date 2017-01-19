@@ -1,5 +1,4 @@
 
-
 #' @title Exploratory data analysis wrapper function
 #' @description This is a wrapper function for the whole exploratory data analysis step
 exploratory.data_analysis <- function(){
@@ -14,27 +13,27 @@ exploratory.data_analysis <- function(){
 #' @description Create an environment variable \code{stuff} which
 exploratory.structure_data <- function(){
   # environment variable which stores all structures data
-  stuff <- baseenv()
+  e <- baseenv
 
   # continuous numeric values which describe the occurence of a word in \code{%}
-  stuff$word_freq <- spambase[,1:48]
+  e$word_freq <- spambase[,1:48]
 
   # continuous numeric values which describe the occurence of a special character in \code{%}
-  stuff$char_freq <- spambase[,49:54]
+  e$char_freq <- spambase[,49:54]
 
   # continuous numeric value which describe the average length of uninterrupted sequences of
   #   capital letters in \code{%}
-  stuff$CAP.length_avg <- spambase[,55, drop = F]
+  e$CAP.length_avg <- spambase[,55, drop = F]
 
   # discret numeric value which describe the length of longest uninterrupted sequence of
   #   capital letters
-  stuff$CAP.length_longest <- spambase[,56, drop = F]
+  e$CAP.length_longest <- spambase[,56, drop = F]
 
   # discret numeric value which describe the total number of capital letters in the e-mail
-  stuff$CAP.length_total <- spambase[,57, drop = F]
+  e$CAP.length_total <- spambase[,57, drop = F]
 
   # denotes whether the e-mail was considered spam (1) or not (0)
-  stuff$classification <- spambase[,58, drop = F]
+  e$classification <- spambase[,58, drop = F]
 }
 
 #' @title Create exploratory plots
@@ -65,6 +64,6 @@ exploratory.create_plots <- function(){
 
   #
   pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
-  corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
+  corrplot::corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
   dev.off()
 }
