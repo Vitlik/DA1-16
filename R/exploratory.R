@@ -13,7 +13,7 @@ exploratory.data_analysis <- function(){
 #' @description Create an environment variable \code{stuff} which
 exploratory.structure_data <- function(){
   # environment variable which stores all structures data
-  e <- baseenv
+  e <- baseenv()
 
   # continuous numeric values which describe the occurence of a word in \code{%}
   e$word_freq <- spambase[,1:48]
@@ -50,6 +50,14 @@ exploratory.create_plots <- function(){
   target <- file.path("out/1. Exploratory - summary.csv")
   file.create(target)
   write.csv2(summary(spambase), target)
+  #
+  target <- file.path("out/1. Exploratory - summary - spam.csv")
+  file.create(target)
+  write.csv2(summary(spambase[(spambase[,58] == 1), -58]), target)
+
+  target <- file.path("out/1. Exploratory - summary - nospam.csv")
+  file.create(target)
+  write.csv2(summary(spambase[(spambase[,58] == 0), -58]), target)
 
   #
   pdf(file.path("out/1. Exploratory - Histograms.pdf"))

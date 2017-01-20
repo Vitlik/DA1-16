@@ -20,11 +20,7 @@ spambase.analysis <- function(){
   cat("\n")
 
   message("5. Principal Component Analysis")
-  dim.pca()
-  cat("\n")
-
-  message("6. Multidimensional scaling")
-  dim.mds()
+  pca()
   cat("\n")
 
   message("7. Fuzzy C-Means clustering")
