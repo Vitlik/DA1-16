@@ -62,10 +62,13 @@ exploratory.create_plots <- function(){
   sink()
 
   # Write summary information of the data into a file
+  to_write <- util.gen.summary(noclasses, "All")
   target <- file.path("out/1. Exploratory - summary.csv")
   file.create(target)
   write.csv2(summary(spambase), target)
   #
+  to_write <- util.gen.summary(allnospam, "Diff", allspam)
+  #print(to_write)
   target <- file.path("out/1. Exploratory - summary - spam.csv")
   file.create(target)
   write.csv2(summary(allspam), target)
@@ -87,6 +90,6 @@ exploratory.create_plots <- function(){
 
   #
   pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
-  corrplot::corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
+  #corrplot::corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
   dev.off()
 }

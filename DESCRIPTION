@@ -18,7 +18,5 @@ LazyData: true
 Imports:
     foreign,
     ggplot2,
-    cluster,
-    corrplot,
-    corrgram
+    cluster
 RoxygenNote: 5.0.1
