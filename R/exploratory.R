@@ -5,8 +5,14 @@ exploratory.data_analysis <- function(){
   # structure the data into the groups it contains
   exploratory.structure_data()
 
-  # create various plots for visual analysis
-  exploratory.create_plots()
+  # write structure and summary information to files
+  exploratory.str_summary()
+
+  #
+  exploratory.correlations()
+
+  #
+  exploratory.dim_vis()
 }
 
 #' @title Structure the spambase data
@@ -49,8 +55,8 @@ exploratory.structure_data <- function(){
 }
 
 #' @title Create exploratory plots
-#' @description
-exploratory.create_plots <- function(){
+#' @description Several
+exploratory.str_summary <- function(){
   # create outputfolder if not existing yet
   if(!file.exists("out")) dir.create("out")
 
@@ -68,14 +74,23 @@ exploratory.create_plots <- function(){
   write.csv2(summary(spambase), target)
   #
   to_write <- util.gen.summary(allnospam, "Diff", allspam)
-  #print(to_write)
-  target <- file.path("out/1. Exploratory - summary - spam.csv")
+  target <- file.path("out/1. Exploratory - summary - compare.csv")
   file.create(target)
-  write.csv2(summary(allspam), target)
+  write.csv2(to_write, target)
+}
+
+#'
+exploratory.correlations <- function(){
+  # correlation view
   #
-  target <- file.path("out/1. Exploratory - summary - nospam.csv")
-  file.create(target)
-  write.csv2(summary(allnospam), target)
+  pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
+  #corrplot::corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
+  dev.off()
+}
+
+#'
+exploratory.dim_vis <- function(){
+  # scatterplots, barplots,
 
   #
   pdf(file.path("out/1. Exploratory - Histograms.pdf"))
@@ -88,8 +103,6 @@ exploratory.create_plots <- function(){
   })
   dev.off()
 
-  #
-  pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
-  #corrplot::corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
-  dev.off()
+
 }
+

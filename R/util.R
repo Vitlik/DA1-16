@@ -51,7 +51,6 @@ util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
               colMeans(frame1),
               colMeans(frame2)
             ),
-            colMeans(frame1),
             rbind(
               util.diff(
                 sapply(1:ncol(frame1), function(column){
@@ -65,21 +64,28 @@ util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
                 sapply(1:ncol(frame2), function(column){
                   max(frame2[,column])})
               )
-
             )
           )
         )
       )
     )
     colnames(tmp) <- colnames(frame1)
-    #print(tmp)
-    # row.names(tmp) <- c(paste0(f1_type," Min:"), paste0(f1_type," 1st Qu.:"),
-    #                     paste0(f1_type," Median:"), paste0(f1_type," Means:"),
-    #                     paste0(f1_type," 3rd Qu.:"), paste0(f1_type," Max:"))
+    row.names(tmp) <- c(paste0(f1_type," Min:"), paste0(f1_type," 1st Qu.:"),
+                        paste0(f1_type," Median:"), paste0(f1_type," Means:"),
+                        paste0(f1_type," 3rd Qu.:"), paste0(f1_type," Max:"))
+    tmp <- rbind(
+      rbind(util.gen.summary(frame1, "NoSpam"), rep("",length(frame1))),
+      rbind(
+        rbind(util.gen.summary(frame2, "Spam"), rep("",length(frame1))),
+        tmp
+      )
+    )
     return(tmp)
   }
 }
 
+#'
+#'
 util.diff <- function(vec1, vec2){
   stopifnot(length(vec1) == length(vec2) & is.numeric(c(vec1,vec2)))
   return(
