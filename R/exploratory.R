@@ -71,7 +71,7 @@ exploratory.str_summary <- function(){
   to_write <- util.gen.summary(noclasses, "All")
   target <- file.path("out/1. Exploratory - summary.csv")
   file.create(target)
-  write.csv2(summary(spambase), target)
+  write.csv2(to_write, target)
   #
   to_write <- util.gen.summary(allnospam, "Diff", allspam)
   target <- file.path("out/1. Exploratory - summary - compare.csv")
@@ -84,7 +84,12 @@ exploratory.correlations <- function(){
   # correlation view
   #
   pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
-  #corrplot::corrplot(cor(spambase[,1:57]), method = "circle", tl.cex=0.5)
+  corrplot::corrplot(cor(noclasses), main = "\nCorrelation Matrix - All Data", type="upper",
+                     method = "circle", tl.cex=0.5, diag = F, order = "hclust")
+  corrplot::corrplot(cor(allnospam), main = "\nCorrelation Matrix - NoSpam", type="upper",
+                     method = "circle", tl.cex=0.5, diag = F, order = "hclust")
+  corrplot::corrplot(cor(allspam), main = "\nCorrelation Matrix - Spam", type="upper",
+                     method = "circle", tl.cex=0.5, diag = F, order = "hclust")
   dev.off()
 }
 
