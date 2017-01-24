@@ -85,11 +85,11 @@ exploratory.correlations <- function(){
   #
   pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
   corrplot::corrplot(cor(noclasses), main = "\nCorrelation Matrix - All Data", type="upper",
-                     method = "circle", tl.cex=0.5, diag = F, order = "hclust")
+                     method = "circle", tl.cex=0.5, diag = F, order = "hclust", tl.srt=80)
   corrplot::corrplot(cor(allnospam), main = "\nCorrelation Matrix - NoSpam", type="upper",
-                     method = "circle", tl.cex=0.5, diag = F, order = "hclust")
+                     method = "circle", tl.cex=0.5, diag = F, order = "hclust", tl.srt=80)
   corrplot::corrplot(cor(allspam), main = "\nCorrelation Matrix - Spam", type="upper",
-                     method = "circle", tl.cex=0.5, diag = F, order = "hclust")
+                     method = "circle", tl.cex=0.5, diag = F, order = "hclust", tl.srt=80)
   dev.off()
 }
 
@@ -110,4 +110,3 @@ exploratory.dim_vis <- function(){
 
 
 }
-
