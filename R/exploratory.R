@@ -1,23 +1,23 @@
 
 #' @title Exploratory data analysis wrapper function
 #' @description This is a wrapper function for the whole exploratory data analysis step
-exploratory.data_analysis <- function(){
+b.exploratory.data_analysis <- function(){
   # structure the data into the groups it contains
-  exploratory.structure_data()
+  b.exploratory.structure_data()
 
   # write structure and summary information to files
-  exploratory.str_summary()
+  b.exploratory.str_summary()
 
   #
-  exploratory.correlations()
+  b.exploratory.correlations()
 
   #
-  exploratory.dim_vis()
+  b.exploratory.dim_vis()
 }
 
 #' @title Structure the spambase data
 #' @description Create an environment variable \code{stuff} which
-exploratory.structure_data <- function(){
+b.exploratory.structure_data <- function(){
   e <<- baseenv()
 
   # denotes whether the e-mail was considered spam (1) or not (0)
@@ -56,7 +56,7 @@ exploratory.structure_data <- function(){
 
 #' @title Create exploratory plots
 #' @description Several
-exploratory.str_summary <- function(){
+b.exploratory.str_summary <- function(){
   # create outputfolder if not existing yet
   if(!file.exists("out")) dir.create("out")
 
@@ -68,19 +68,21 @@ exploratory.str_summary <- function(){
   sink()
 
   # Write summary information of the data into a file
-  to_write <- util.gen.summary(noclasses, "All")
+  to_write <- z.util.gen.summary(noclasses, "All")
   target <- file.path("out/1. Exploratory - summary.csv")
   file.create(target)
   write.csv2(to_write, target)
   #
-  to_write <- util.gen.summary(allnospam, "Diff", allspam)
+  to_write <- z.util.gen.summary(allnospam, "Diff", allspam)
   target <- file.path("out/1. Exploratory - summary - compare.csv")
   file.create(target)
   write.csv2(to_write, target)
 }
 
+#' Test title
 #'
-exploratory.correlations <- function(){
+#' blub description
+b.exploratory.correlations <- function(){
   # correlation view
   #
   pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
@@ -94,19 +96,18 @@ exploratory.correlations <- function(){
 }
 
 #'
-exploratory.dim_vis <- function(){
+b.exploratory.dim_vis <- function(){
   # scatterplots, barplots,
 
   #
   pdf(file.path("out/1. Exploratory - Histograms.pdf"))
-  layout(matrix(1:(5 * ceiling(ncol(spambase[,1:20])/5)), ncol = 5, byrow = T))
-  sapply(names(spambase[,1:20]), function(name) {
-    hist(spambase[[name]], main = name,
-         #xlab = paste("p =", shapiro.test(spambase[[name]])),
-         col = ercis.red, col.axis = ercis.grey, col.lab = ercis.grey,
-         col.main = ercis.grey, col.sub = ercis.grey)
-  })
+  #layout(matrix(1:(5 * ceiling(ncol(spambase[,1:20])/5)), ncol = 5, byrow = T))
+  for(name in names(spambase[,1])){
+    print(ggplot(noclasses, aes(x=noclasses[,"make"])) +
+      geom_histogram(binwidth = max(noclasses[,"make"])/100, fill=ercis.red) +
+      theme_bw(base_size = 12, base_family = ""))
+    # ggplot(noclasses[noclasses[,2]>0,], aes(x=noclasses[noclasses[,2]>0,2])) +
+    #   geom_histogram(binwidth = 0.14, fill=ercis.red) + theme_bw(base_size = 12, base_family = "")
+  }
   dev.off()
-
-
 }

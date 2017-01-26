@@ -1,10 +1,10 @@
 #' Main function which guides through the data analysis.
 #'
 #' @export
-spambase.analysis <- function(){
+a.spambase.analysis <- function(){
 
   message("1. Exploratory data analysis")
-  exploratory.data_analysis()
+  b.exploratory.data_analysis()
   cat("\n")
 
   message("2. Normality check")
