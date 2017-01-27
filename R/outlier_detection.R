@@ -1,5 +1,5 @@
 
 
-outlier_detection <- function(){
+d.a.outlier_detection <- function(){
 
 }

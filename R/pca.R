@@ -1,5 +1,5 @@
 
 
-pca <- function(){
+e.a.pca <- function(){
 
 }

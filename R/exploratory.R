@@ -1,26 +1,26 @@
 
 #' @title Exploratory data analysis wrapper function
 #' @description This is a wrapper function for the whole exploratory data analysis step
-b.exploratory.data_analysis <- function(){
+b.a.exploratory.data_analysis <- function(){
   # structure the data into the groups it contains
-  b.exploratory.structure_data()
+  b.b.exploratory.structure_data()
 
   # write structure and summary information to files
-  b.exploratory.str_summary()
+  b.c.exploratory.str_summary()
   cat("Summary written\n")
 
   #
-  b.exploratory.correlations()
+  b.d.exploratory.correlations()
   cat("Correlations plotted\n")
 
   #
-  b.exploratory.dim_vis()
+  b.e.exploratory.dim_vis()
   cat("Dimension visualizations plottet\n")
 }
 
 #' @title Structure the spambase data
-#' @description Create an environment variable \code{stuff} which
-b.exploratory.structure_data <- function(){
+#' @description Create an environment variable \code{e} which ...
+b.b.exploratory.structure_data <- function(){
   e <<- baseenv()
 
   # denotes whether the e-mail was considered spam (1) or not (0)
@@ -57,9 +57,8 @@ b.exploratory.structure_data <- function(){
   e$CAP.length_total.nospam <- spambase[spambase[,58]==0, 57, drop = F]
 }
 
-#' @title Create exploratory plots
-#' @description Several
-b.exploratory.str_summary <- function(){
+
+b.c.exploratory.str_summary <- function(){
   # create outputfolder if not existing yet
   if(!file.exists("out")) dir.create("out")
 
@@ -71,21 +70,19 @@ b.exploratory.str_summary <- function(){
   sink()
 
   # Write summary information of the data into a file
-  to_write <- z.util.gen.summary(noclasses, "All")
+  to_write <- z.a.util.gen.summary(noclasses, "All")
   target <- file.path("out/1. Exploratory - summary.csv")
   file.create(target)
   write.csv2(to_write, target)
   #
-  to_write <- z.util.gen.summary(allnospam, "Diff", allspam)
+  to_write <- z.a.util.gen.summary(allnospam, "Diff", allspam)
   target <- file.path("out/1. Exploratory - summary - compare.csv")
   file.create(target)
   write.csv2(to_write, target)
 }
 
-#' Test title
-#'
-#' blub description
-b.exploratory.correlations <- function(){
+
+b.d.exploratory.correlations <- function(){
   # correlation view
   #
   pdf(file.path("out/1. Exploratory - Correlation matrix.pdf"))
@@ -98,8 +95,8 @@ b.exploratory.correlations <- function(){
   dev.off()
 }
 
-#'
-b.exploratory.dim_vis <- function(){
+
+b.e.exploratory.dim_vis <- function(){
   # barplot of single logical dimension "class"
   ggplot2::ggsave(ggplot2::ggplot() + ggplot2::aes(spambase[,58]) +
                     ggplot2::geom_bar(fill=ercis.red) + ggplot2::labs(x="Number of Mails") +

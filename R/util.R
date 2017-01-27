@@ -11,8 +11,7 @@ ercis.green    = rgb(135/255, 191/255,  42/255, 1)
 
 #' @title Example Function for docu creation
 #'
-#' @description
-#' Example function for understanding documentation
+#' @description Example function for understanding how to document
 #' Calculates product of \code{x^2} multiplied by \code{y}
 #'
 #' @param x A number which will be squared
@@ -24,14 +23,13 @@ ercis.green    = rgb(135/255, 191/255,  42/255, 1)
 #'
 #' test.func(2,3)
 #' # 12
-z.util.test.func <- function(x, y){
+z.z.util.test.func <- function(x, y){
   return(x*x*y)
 }
 
 
-#'
-#'
-z.util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
+
+z.a.util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
   stopifnot(is.data.frame(frame1))
   if(is.null(frame2) | !is.data.frame(frame2)){
     tmp <- rbind(
@@ -60,35 +58,35 @@ z.util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
     return(tmp)
   } else {
     tmp <- rbind(
-      z.util.diff(
+      z.b.util.diff(
         sapply(1:ncol(frame1), function(column){min(frame1[,column])}),
         sapply(1:ncol(frame2), function(column){min(frame2[,column])})
       ),
       rbind(
-        z.util.diff(
+        z.b.util.diff(
           sapply(1:ncol(frame1), function(column){
             quantile(frame1[,column],probs = 0.25)}),
           sapply(1:ncol(frame2), function(column){
             quantile(frame2[,column],probs = 0.25)})
         ),
         rbind(
-          z.util.diff(
+          z.b.util.diff(
             sapply(1:ncol(frame1), function(column){median(frame1[,column])}),
             sapply(1:ncol(frame2), function(column){median(frame2[,column])})
           ),
           rbind(
-            z.util.diff(
+            z.b.util.diff(
               colMeans(frame1),
               colMeans(frame2)
             ),
             rbind(
-              z.util.diff(
+              z.b.util.diff(
                 sapply(1:ncol(frame1), function(column){
                   quantile(frame1[,column],probs = 0.75)}),
                 sapply(1:ncol(frame2), function(column){
                   quantile(frame2[,column],probs = 0.75)})
               ),
-              z.util.diff(
+              z.b.util.diff(
                 sapply(1:ncol(frame1), function(column){
                   max(frame1[,column])}),
                 sapply(1:ncol(frame2), function(column){
@@ -104,9 +102,9 @@ z.util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
                         paste0(f1_type," Median:"), paste0(f1_type," Means:"),
                         paste0(f1_type," 3rd Qu.:"), paste0(f1_type," Max:"))
     tmp <- rbind(
-      rbind(z.util.gen.summary(frame1, "NoSpam"), rep("",length(frame1))),
+      rbind(z.a.util.gen.summary(frame1, "NoSpam"), rep("",length(frame1))),
       rbind(
-        rbind(z.util.gen.summary(frame2, "Spam"), rep("",length(frame1))),
+        rbind(z.a.util.gen.summary(frame2, "Spam"), rep("",length(frame1))),
         tmp
       )
     )
@@ -114,9 +112,8 @@ z.util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
   }
 }
 
-#'
-#'
-z.util.diff <- function(vec1, vec2){
+
+z.b.util.diff <- function(vec1, vec2){
   stopifnot(length(vec1) == length(vec2) & is.numeric(c(vec1,vec2)))
   return(
     sapply(1:length(vec1), function(pos){
