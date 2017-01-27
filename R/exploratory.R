@@ -7,12 +7,15 @@ b.exploratory.data_analysis <- function(){
 
   # write structure and summary information to files
   b.exploratory.str_summary()
+  cat("Summary written\n")
 
   #
   b.exploratory.correlations()
+  cat("Correlations plotted\n")
 
   #
   b.exploratory.dim_vis()
+  cat("Dimension visualizations plottet\n")
 }
 
 #' @title Structure the spambase data
@@ -97,15 +100,35 @@ b.exploratory.correlations <- function(){
 
 #'
 b.exploratory.dim_vis <- function(){
-  # scatterplots, barplots,
-
-  #
+  # Create histogram plot of nospam and spam emails for each dimension
   p <- lapply(names(noclasses), function(column){
-    ggplot2::ggplot() + ggplot2::aes(x=noclasses[,column]) + ggplot2::labs(x=column) +
+    ggplot2::ggplot(spambase) + ggplot2::aes(x=noclasses[,column]) +
+      ggplot2::labs(x=paste0(column," : NoSpam vs. Spam")) +
       ggplot2::geom_histogram(binwidth = max(noclasses[,column])/100, fill=ercis.red) +
-      ggplot2::theme_bw(base_size = 12, base_family = "")
+      ggplot2::theme_bw(base_size = 12, base_family = "") + ggplot2::facet_grid(. ~ spambase[,58])
   })
   pdf(file.path("out/1. Exploratory - Histograms.pdf"))
+  sapply(p, function(plot_i){
+    print(plot_i)
+  })
+  dev.off()
+
+  # create scatterplots of highly correlated dimensions
+  # get sorted list of correlations
+  corlist <- cor(noclasses)
+  corlist[lower.tri(corlist,diag=TRUE)]=NA  #Prepare to drop duplicates and meaningless information
+  corlist=as.data.frame(as.table(corlist))  #Turn into a 3-column table
+  corlist=na.omit(corlist)                  #Get rid of the junk we flagged above
+  corlist=corlist[order(-abs(corlist$Freq)),] #Sort by highest correlation (whether +ve or -ve)
+  p <- lapply(1:nrow(corlist[corlist$Freq > 0.2,]), function(rowID){
+    ggplot2::ggplot(noclasses) +
+      ggplot2::annotate("text", label = paste0("cor: ",round(corlist[rowID,"Freq"],2)),x=Inf,y=Inf,
+                        vjust=1, hjust=1, size = 6, colour = ercis.red) +
+      ggplot2::aes(x=noclasses[,corlist[rowID,"Var1"]], y=noclasses[,corlist[rowID,"Var2"]]) +
+      ggplot2::labs(x=corlist[rowID,"Var1"],y=corlist[rowID,"Var2"]) +
+      ggplot2::geom_point() + ggplot2::theme_bw(base_size = 12, base_family = "")
+  })
+  pdf(file.path("out/1. Exploratory - Scatterplots of highly correlated dimensions.pdf"))
   sapply(p, function(plot_i){
     print(plot_i)
   })

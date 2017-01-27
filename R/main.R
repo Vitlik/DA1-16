@@ -4,7 +4,7 @@
 a.spambase.analysis <- function(){
 
   message("1. Exploratory data analysis")
-  b.exploratory.data_analysis()
+  #b.exploratory.data_analysis()
   cat("\n")
 
   message("2. Normality check")
