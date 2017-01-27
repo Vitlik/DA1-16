@@ -100,6 +100,12 @@ b.exploratory.correlations <- function(){
 
 #'
 b.exploratory.dim_vis <- function(){
+  # barplot of single logical dimension "class"
+  ggplot2::ggsave(ggplot2::ggplot() + ggplot2::aes(spambase[,58]) +
+                    ggplot2::geom_bar(fill=ercis.red) + ggplot2::labs(x="Number of Mails") +
+                    ggplot2::theme_bw(base_size = 12, base_family = ""),
+                  file="out/1. Exploratory - Barplot of email numbers.pdf")
+
   # Create histogram plot of nospam and spam emails for each dimension
   p <- lapply(names(noclasses), function(column){
     ggplot2::ggplot(spambase) + ggplot2::aes(x=noclasses[,column]) +
