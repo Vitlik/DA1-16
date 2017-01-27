@@ -2,11 +2,11 @@ Package: da1wt2016
 Type: Package
 Title: Analysis of a spambase dataset
 Version: 0.1
-Author: person("Hyowon", "An"),
-    person("Vitali", "Friesen"),
-    person("Lijin", "Han"),
-    person("Evelyn", "Navarrete"),
-    person("Xueying", "Wang")
+Author: An, Hyowon
+    Friesen, Vitali
+    Han, Lijin
+    Navarrete, Evelyn
+    Wang, Xueying
 Maintainer: No maintainer<no@mail.com>
 Description: This package analyses the dataset from http://www.openml.org/d/44.
     It represents a supervised dataset for spammail occurences and stores the flag

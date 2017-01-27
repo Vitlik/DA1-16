@@ -100,14 +100,14 @@ b.exploratory.dim_vis <- function(){
   # scatterplots, barplots,
 
   #
+  p <- lapply(names(noclasses), function(column){
+    ggplot2::ggplot() + ggplot2::aes(x=noclasses[,column]) + ggplot2::labs(x=column) +
+      ggplot2::geom_histogram(binwidth = max(noclasses[,column])/100, fill=ercis.red) +
+      ggplot2::theme_bw(base_size = 12, base_family = "")
+  })
   pdf(file.path("out/1. Exploratory - Histograms.pdf"))
-  #layout(matrix(1:(5 * ceiling(ncol(spambase[,1:20])/5)), ncol = 5, byrow = T))
-  for(name in names(spambase[,1])){
-    print(ggplot(noclasses, aes(x=noclasses[,"make"])) +
-      geom_histogram(binwidth = max(noclasses[,"make"])/100, fill=ercis.red) +
-      theme_bw(base_size = 12, base_family = ""))
-    # ggplot(noclasses[noclasses[,2]>0,], aes(x=noclasses[noclasses[,2]>0,2])) +
-    #   geom_histogram(binwidth = 0.14, fill=ercis.red) + theme_bw(base_size = 12, base_family = "")
-  }
+  sapply(p, function(plot_i){
+    print(plot_i)
+  })
   dev.off()
 }
