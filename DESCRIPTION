@@ -19,5 +19,6 @@ Imports:
     foreign,
     ggplot2,
     cluster,
-    corrplot
+    corrplot,
+    fitdistrplus
 RoxygenNote: 5.0.1

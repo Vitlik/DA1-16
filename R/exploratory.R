@@ -7,20 +7,19 @@ b.a.exploratory.data_analysis <- function(){
 
   # write structure and summary information to files
   b.c.exploratory.str_summary()
-  cat("Summary written\n")
 
   #
   b.d.exploratory.correlations()
-  cat("Correlations plotted\n")
 
   #
-  b.e.exploratory.dim_vis()
-  cat("Dimension visualizations plottet\n")
+  #b.e.exploratory.dim_vis()
 }
 
 #' @title Structure the spambase data
 #' @description Create an environment variable \code{e} which ...
 b.b.exploratory.structure_data <- function(){
+  par(mar=c(4.1,5.1,4.1,2.1))
+
   e <<- baseenv()
 
   # denotes whether the e-mail was considered spam (1) or not (0)
@@ -79,6 +78,8 @@ b.c.exploratory.str_summary <- function(){
   target <- file.path("out/1. Exploratory - summary - compare.csv")
   file.create(target)
   write.csv2(to_write, target)
+
+  cat("Summary written\n")
 }
 
 
@@ -93,6 +94,8 @@ b.d.exploratory.correlations <- function(){
   corrplot::corrplot(cor(allspam), main = "\nCorrelation Matrix - Spam", type="upper",
                      method = "circle", tl.cex=0.5, diag = F, order = "hclust", tl.srt=80)
   dev.off()
+
+  cat("Correlations plotted\n")
 }
 
 
@@ -108,7 +111,10 @@ b.e.exploratory.dim_vis <- function(){
     ggplot2::ggplot(spambase) + ggplot2::aes(x=noclasses[,column]) +
       ggplot2::labs(x=paste0(column," : NoSpam vs. Spam")) +
       ggplot2::geom_histogram(binwidth = max(noclasses[,column])/100, fill=ercis.red) +
-      ggplot2::theme_bw(base_size = 12, base_family = "") + ggplot2::facet_grid(. ~ spambase[,58])
+      ggplot2::theme_bw(base_size = 12, base_family = "") +
+      ggplot2::annotate("text", label = paste0("p-value: ",
+                                               shapiro.test(spambase[,column])$p.value),
+                        x=Inf,y=Inf, vjust=1, hjust=1, size = 6, colour = ercis.red)
   })
   pdf(file.path("out/1. Exploratory - Histograms.pdf"))
   sapply(p, function(plot_i){
@@ -136,4 +142,6 @@ b.e.exploratory.dim_vis <- function(){
     print(plot_i)
   })
   dev.off()
+
+  cat("Dimension visualizations plottet\n")
 }

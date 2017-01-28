@@ -7,23 +7,19 @@ a.spambase.analysis <- function(){
   b.a.exploratory.data_analysis()
   cat("\n")
 
-  message("2. Normality check")
-  c.a.normality.check()
+  message("2. Normality")
+  c.a.normality()
   cat("\n")
 
-  message("3. Transformation to normality")
-  c.b.normality.transform()
-  cat("\n")
-
-  message("4. Outlier detection")
+  message("3. Outlier detection")
   d.a.outlier_detection()
   cat("\n")
 
-  message("5. Principal Component Analysis")
+  message("4. Principal Component Analysis")
   e.a.pca()
   cat("\n")
 
-  message("7. K-Means & Fuzzy C-Means clustering")
+  message("5. K-Means & Fuzzy C-Means clustering")
   f.a.clustering()
   cat("\n")
 }
