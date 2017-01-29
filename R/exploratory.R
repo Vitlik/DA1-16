@@ -106,10 +106,10 @@ b.e.exploratory.dim_vis <- function(){
                     ggplot2::theme_bw(base_size = 12, base_family = ""),
                   file="out/1. Exploratory - Barplot of email numbers.pdf")
 
-  # Create histogram plot of nospam and spam emails for each dimension
+  # Create histogram plot of nospam and spam emails for each dimension + p-value
   p <- lapply(names(noclasses), function(column){
     ggplot2::ggplot(spambase) + ggplot2::aes(x=noclasses[,column]) +
-      ggplot2::labs(x=paste0(column," : NoSpam vs. Spam")) +
+      ggplot2::labs(x=paste0("Histogram of: ", column)) +
       ggplot2::geom_histogram(binwidth = max(noclasses[,column])/100, fill=ercis.red) +
       ggplot2::theme_bw(base_size = 12, base_family = "") +
       ggplot2::annotate("text", label = paste0("p-value: ",

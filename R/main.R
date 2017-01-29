@@ -3,6 +3,8 @@
 #' @export
 a.spambase.analysis <- function(){
 
+  z.z.set_environment()
+
   message("1. Exploratory data analysis")
   b.a.exploratory.data_analysis()
   cat("\n")
@@ -20,6 +22,6 @@ a.spambase.analysis <- function(){
   cat("\n")
 
   message("5. K-Means & Fuzzy C-Means clustering")
-  f.a.clustering()
+  #f.a.clustering()
   cat("\n")
 }
