@@ -9,14 +9,8 @@ spambase.scaled<-data.frame(spambase.scaled)
 # inspect whether there are raws with only zeros
 sum(apply(spambase.scaled,1,mean)==0)
 
-lof.det<-lofactor(spambase.scaled,k=15)
+lof.det<-lofactor(spambase.scaled,k=100)
 
-# replace NAs with zero
-lof.det[is.na(lof.det)]<-0
-
-# replace infinite values with the maximal values remain
-max<-max(lof.det[which(lof.det!=Inf)])
-lof.det[is.infinite(lof.det)]<-max
 
 # plot the outliers and their IDs
 gg.df<-data.frame(names=as.factor(1:nrow(spambase)), lof.det)
@@ -50,15 +44,15 @@ spam.factor<-factanal(spambase.scaled.out, factors = 4)
 
 # check which variables highly load on a factor (>0.4)
 spam.factor$loadings
-factor1.variable<-which(abs(spam.factor$loadings[,1])>0.35, arr.ind = TRUE)
-factor2.variable<-which(abs(spam.factor$loadings[,2])>0.35, arr.ind = TRUE)# there is only one variable, therefore no difference
-factor3.variable<-which(abs(spam.factor$loadings[,3])>0.35, arr.ind = TRUE)
+factor1.variable<-which(abs(spam.factor$loadings[,1])>0.4, arr.ind = TRUE)
+factor2.variable<-which(abs(spam.factor$loadings[,2])>0.4, arr.ind = TRUE)# there is only one variable, therefore no difference
+factor3.variable<-which(abs(spam.factor$loadings[,3])>0.4, arr.ind = TRUE)
 factor.variable<-c(factor1.variable, factor2.variable, factor3.variable)
 
 # calculate the scores of factor based on the highly loading variables
-factor1<-apply(spambase.scaled.out[,which(abs(spam.factor$loadings[,1])>0.35)],1,mean)
-factor2<-spambase.scaled.out[,which(abs(spam.factor$loadings[,2])>0.35)]
-factor3<-apply(spambase.scaled.out[,which(abs(spam.factor$loadings[,3])>0.35)],1,mean)
+factor1<-apply(spambase.scaled.out[,which(abs(spam.factor$loadings[,1])>0.4)],1,mean)
+factor2<-spambase.scaled.out[,which(abs(spam.factor$loadings[,2])>0.4)]
+factor3<-apply(spambase.scaled.out[,which(abs(spam.factor$loadings[,3])>0.4)],1,mean)
 factor.score<-cbind(factor1, factor2, factor3)
 
 # replace variables with factors in the dataset
@@ -78,7 +72,7 @@ par(opar)
 # K-means clustering
 k.cluster<-kmeans(spambase.scaled.new, centers= 2, nstart = 40, algorithm = 'Lloyd',iter.max = 50)
 sum(k.cluster$cluster-1==1)/length(k.cluster$cluster)
-sum(k.cluster$cluster-1==spambase[rownames(spambase.scaled.out),'class'])/length(k.cluster$cluster)
+sum(k.cluster$cluster-1!=spambase[rownames(spambase.scaled.out),'class'])/length(k.cluster$cluster)
 
 # C-means clustering
 c.cluster<-cmeans(spambase.scaled.new, iter.max = 20, centers = 2, dist = 'euclidean', method = 'cmeans', m = 2)
