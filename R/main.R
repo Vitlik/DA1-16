@@ -97,14 +97,14 @@ a.b.main.spambase.analysis <- function(){
   cat("\n")
 
   message("3. Outlier detection")
-  lof.det <- d.a.outlier_handle()
+  spambase.scaled.out <- d.a.outlier_handle()
   cat("\n")
 
   message("4. Principal Component Analysis")
-  e.a.pca(lof.det)
+  spambase.scaled.new <- e.a.pca(spambase.scaled.out)
   cat("\n")
 
   message("5. K-Means & Fuzzy C-Means clustering")
-  #f.a.clustering()
+  f.a.clustering(spambase.scaled.out, spambase.scaled.new)
   cat("\n")
 }
