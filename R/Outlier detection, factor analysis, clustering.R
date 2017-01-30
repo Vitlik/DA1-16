@@ -1,8 +1,5 @@
 temp2 <- function(){
-library(grid)
-library(DMwR)
-library(ggplot2)
-library(e1071)
+
 ##outlier detection with lofactor
 spambase.scaled<-scale(spambase[1:57], center=TRUE, scale=TRUE)
 spambase.scaled<-data.frame(spambase.scaled)
@@ -77,28 +74,10 @@ sum(k.cluster$cluster-1!=spambase[rownames(spambase.scaled.out),'class'])/length
 
 # C-means clustering
 c.cluster<-cmeans(spambase.scaled.new, iter.max = 20, centers = 2, dist = 'euclidean', method = 'cmeans', m = 2)
+c.cluster<-fanny(spambase.scaled.new,  k = 2, memb.exp = 1.2)
+c.cluster$clustering[c.cluster$clustering == 2] <- 0
 sum(c.cluster$cluster-1==spambase[rownames(spambase.scaled.out), 'class'])/nrow(spambase)
 
 
-# plot within sum of squares vs k
-plotWSSVsK = function(data) {
-  n = nrow(data) # determine possible numbers for K*
-  Ks = seq(n - 1L)
-# WSS for the actual data
-  tot.wss = sapply(Ks, function(k) {
-  kmeans(data, centers = k, algorithm = "Lloyd", iter.max = 20)$tot.withinss
-})
-# WSS for the uniformaly generated data
-unif.data = matrix(runif(2 * n, min = min(data[, 1]), max = max(data[, 2])), ncol = 2)
-exp.tot.wss = sapply(Ks, function(k) {
-  kmeans(unif.data, centers = k)$tot.withinss })
-# actually draw the plot
-plot(Ks, tot.wss, type = "b", col = "red",
-     xlab = "Number of clusters",
-     ylab = expression(W[k]))
-lines(Ks, exp.tot.wss, col = "blue")
-points(Ks, exp.tot.wss, col = "blue")
-}
 
-plotWSSVsK(spambase.scaled.out)
 }
