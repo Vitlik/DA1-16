@@ -55,6 +55,12 @@ c.a.normality <- function(){
 
   # Examplary use of transformation to normality
   c.e.norm_transform()
+
+  # Scale the dataset
+  c.f.scaling()
+
+  # plot dataset before and after scaling
+  c.g.scaling.plot()
 }
 
 #' @title Normality - Q-Q-Plots

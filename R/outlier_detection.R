@@ -24,8 +24,14 @@
 #' @author Lijin Lan (construct of function), Vitali Friesen (structure, documentation)
 d.a.outlier_handle <- function(){
 
+  # detect outliers in the dataset and plot them
   tmp <- d.b.outlier_detection()
-  return(d.c.outlier_delete(tmp))
+
+  # plot outliers of each variable
+  d.c.outlier_variable()
+
+  # delete the outliers which are detected
+  return(d.d.outlier_delete(tmp))
 
 }
 
@@ -67,7 +73,7 @@ d.b.outlier_detection <- function(){
 #' one varialbe also an outlier for the whole dataset depends on its relative constellation in the
 #' multi-dimensional space.
 #' @author Lijin Lan (construct of function and documentation)
-d.c.outlieer_variable<-function(){
+d.c.outlier_variable<-function(){
   # derive names from database
   names<-names(spambase[,1:57])[1:9]
   # set the ploting area with 9 sections
