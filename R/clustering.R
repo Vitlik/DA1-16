@@ -1,37 +1,38 @@
 
-#' @title Clustering
-#' @description
-#'
-#' @author Lijin Lan, Evelyn Navarrete
+
 f.a.clustering <- function(){
 
+  # Fuzzy C Means
+
+  # use cmeans to cluster our data with 48 variables
+  c.cluster <- e1071::cmeans(word_freq,2,50,verbose = TRUE,method = "cmeans")
+
+  # show how many emails in each class
+  c.cluster$size
+
+  # if you want to see each email belongs to which class
+  # c.cluster$cluster
+
+  # Comparison of the clusters with email type (variable: class)
+  table(c.cluster$cluster,classes)
+
+  # Compute the rate of matching result
+  sum(as.numeric(c.cluster$cluster)!=classes)/nrow(spambase)
+
+  # use cmeans to cluster our data with 57 variables
+  c.cluster_all <- e1071::cmeans(noclasses,2,50,verbose = TRUE,method = "cmeans")
+
+  # show how many emails in each class
+  c.cluster_all$size
+
+  # if you want to see each email belongs to which class
+  # c.cluster_all$cluster
+
+  # Comparison of the clusters with email type (variable: class)
+  table(c.cluster_all$cluster,classes)
+
+  # Compute the rate of matching result
+  sum(as.numeric(c.cluster_all$cluster)!=classes)/nrow(spambase)
 
 
-
-
-  plotWSSVsK(spambase.scaled.out)
-
-
-}
-
-# plot within sum of squares vs k
-plotWSSVsK = function(data) {
-  n = nrow(data) # determine possible numbers for K*
-  Ks = 1:20
-  # WSS for the actual data
-  tot.wss = sapply(Ks, function(k) {
-    kmeans(data, centers = k, algorithm = "Lloyd", iter.max = 70)$tot.withinss
-  })
-
-  # WSS for the uniformaly generated data
-  unif.data = matrix(runif(2 * n, min = min(data[, 1]), max = max(data[, 2])), ncol = 2)
-  exp.tot.wss = sapply(Ks, function(k) {
-    kmeans(unif.data, centers = k)$tot.withinss })
-
-  # actually draw the plot
-  plot(Ks, tot.wss, type = "b", col = "red",
-       xlab = "Number of clusters",
-       ylab = expression(W[k]))
-  lines(Ks, exp.tot.wss, col = "blue")
-  points(Ks, exp.tot.wss, col = "blue")
 }
