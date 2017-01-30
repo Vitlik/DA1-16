@@ -7,6 +7,11 @@
 b.a.exploratory.data_analysis()
 }
 \description{
-This is a wrapper function for the whole exploratory data analysis step
+To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+This is a wrapper function for the whole exploratory data analysis step.
+}
+\author{
+Vitali Friesen
 }
 

@@ -8,7 +8,7 @@ Author: An, Hyowon
     Navarrete, Evelyn
     Wang, Xueying
 Maintainer: No maintainer<no@mail.com>
-Description: This package analyses the dataset from http://www.openml.org/d/44.
+Description: This package analyses the dataset from \url{http://www.openml.org/d/44}.
     It represents a supervised dataset for spammail occurences and stores the flag
     of spam or not spam and some attributes of the corresponding mails. These are
     occurences of specific words and capital letters.
@@ -21,5 +21,6 @@ Imports:
     cluster,
     e1071,
     corrplot,
-    fitdistrplus
+    fitdistrplus,
+    DMwR
 RoxygenNote: 5.0.1

@@ -1,6 +1,10 @@
 
 #' @title Exploratory data analysis wrapper function
-#' @description This is a wrapper function for the whole exploratory data analysis step
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#' This is a wrapper function for the whole exploratory data analysis step.
+#'
+#' @author Vitali Friesen
 b.a.exploratory.data_analysis <- function(){
   # structure the data into the groups it contains
   b.b.exploratory.structure_data()
@@ -12,11 +16,15 @@ b.a.exploratory.data_analysis <- function(){
   b.d.exploratory.correlations()
 
   #
-  #b.e.exploratory.dim_vis()
+  b.e.exploratory.dim_vis()
 }
 
 #' @title Structure the spambase data
-#' @description Create an environment variable \code{e} which ...
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#' Create an environment variable \code{e} which ...
+#'
+#' @author Vitali Friesen
 b.b.exploratory.structure_data <- function(){
   par(mar=c(4.1,5.1,4.1,2.1))
 
@@ -56,10 +64,13 @@ b.b.exploratory.structure_data <- function(){
   e$CAP.length_total.nospam <- spambase[spambase[,58]==0, 57, drop = F]
 }
 
-
+#' @title BBBB
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Vitali Friesen
 b.c.exploratory.str_summary <- function(){
-  # create outputfolder if not existing yet
-  if(!file.exists("out")) dir.create("out")
 
   # Write information about the structure of the data into a file
   target <- file.path("out/1. Exploratory - str.txt")
@@ -82,7 +93,12 @@ b.c.exploratory.str_summary <- function(){
   cat("Summary written\n")
 }
 
-
+#' @title BBBBB
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Vitali Friesen
 b.d.exploratory.correlations <- function(){
   # correlation view
   #
@@ -98,7 +114,10 @@ b.d.exploratory.correlations <- function(){
   cat("Correlations plotted\n")
 }
 
-
+#' @title BBBBBB
+#' @description
+#'
+#' @author Vitali Friesen
 b.e.exploratory.dim_vis <- function(){
   # barplot of single logical dimension "class"
   ggplot2::ggsave(ggplot2::ggplot() + ggplot2::aes(spambase[,58]) +
@@ -111,10 +130,10 @@ b.e.exploratory.dim_vis <- function(){
     ggplot2::ggplot(spambase) + ggplot2::aes(x=noclasses[,column]) +
       ggplot2::labs(x=paste0("Histogram of: ", column)) +
       ggplot2::geom_histogram(binwidth = max(noclasses[,column])/100, fill=ercis.red) +
-      ggplot2::theme_bw(base_size = 12, base_family = "") +
-      ggplot2::annotate("text", label = paste0("p-value: ",
-                                               shapiro.test(spambase[,column])$p.value),
-                        x=Inf,y=Inf, vjust=1, hjust=1, size = 6, colour = ercis.red)
+      ggplot2::theme_bw(base_size = 18, base_family = "") +
+      ggplot2::annotate("text",
+                        label = paste0("p-value: ", shapiro.test(spambase[,column])$p.value),
+                        x=Inf,y=Inf, vjust=1, hjust=1, size = 9, colour = ercis.red)
   })
   pdf(file.path("out/1. Exploratory - Histograms.pdf"))
   sapply(p, function(plot_i){
@@ -132,7 +151,7 @@ b.e.exploratory.dim_vis <- function(){
   p <- lapply(1:nrow(corlist[corlist$Freq > 0.2,]), function(rowID){
     ggplot2::ggplot(noclasses) +
       ggplot2::annotate("text", label = paste0("cor: ",round(corlist[rowID,"Freq"],2)),x=Inf,y=Inf,
-                        vjust=1, hjust=1, size = 6, colour = ercis.red) +
+                        vjust=1, hjust=1, size = 9, colour = ercis.red) +
       ggplot2::aes(x=noclasses[,corlist[rowID,"Var1"]], y=noclasses[,corlist[rowID,"Var2"]]) +
       ggplot2::labs(x=corlist[rowID,"Var1"],y=corlist[rowID,"Var2"]) +
       ggplot2::geom_point() + ggplot2::theme_bw(base_size = 12, base_family = "")

@@ -1,5 +1,10 @@
 
-
+#' @title C
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Vitali Friesen
 c.a.normality <- function(){
 
   # qq plots
@@ -17,6 +22,12 @@ c.a.normality <- function(){
   c.e.norm_transform()
 }
 
+#' @title CC
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Vitali Friesen
 c.b.qqplots <- function(){
   pdf(file.path("out/2. Normality - Normality QQ-Plots.pdf"))
   layout(matrix(1:4, ncol=2,nrow=2))
@@ -30,7 +41,12 @@ c.b.qqplots <- function(){
   cat("Normality Q-Q-Plots created\n")
 }
 
-
+#' @title CCC
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Vitali Friesen
 c.c.chisquare <- function(){
   x <- noclasses
   cm <- colMeans(x)
@@ -51,6 +67,12 @@ c.c.chisquare <- function(){
   cat("Normality chi^2-Plot created\n")
 }
 
+#' @title CCCC
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Vitali Friesen
 c.d.distribution_test <- function(){
   #plot distributions
   pdf(file.path("out/2. Normality - Cullen and Frey graphs.pdf"))
@@ -63,7 +85,12 @@ c.d.distribution_test <- function(){
   cat("Cullen and Frey graphs created\n")
 }
 
-
+#' @title CCCCC
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Vitali Friesen
 c.e.norm_transform <- function(){
 
   vari <- spambase[spambase[,"will"]>0,"will"]

@@ -7,6 +7,11 @@
 b.b.exploratory.structure_data()
 }
 \description{
+To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
 Create an environment variable \code{e} which ...
+}
+\author{
+Vitali Friesen
 }
 
