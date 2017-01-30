@@ -28,10 +28,10 @@ d.a.outlier_handle <- function(spambase.scaled){
   tmp <- d.b.outlier_detection(spambase.scaled)
 
   # plot outliers of each variable
-  d.c.outlier_variable()
+  d.c.outlier_variable(tmp)
 
   # delete the outliers which are detected
-  return(d.d.outlier_delete(tmp))
+  return(d.d.outlier_delete(spambase.scaled, tmp))
 
 }
 
@@ -57,12 +57,12 @@ d.b.outlier_detection <- function(spambase.scaled){
   # value plus 4 times standard deviation are ploted in red with respective number.
   gg.df<-data.frame(names=as.factor(1:nrow(spambase)), lof.det)
   plot.new()
-  ggplot2::ggplot(gg.df, aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
+  ggplot2::ggplot(gg.df, ggplot2::aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
     ggplot2::geom_point(col='black', pch=1) +
-    ggplot2::geom_text(aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0, size=8)+
+    ggplot2::geom_text(ggplot2::aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0, size=8)+
     ggplot2::labs(title= "Outlier Detection", x = "Observations", y = "")+
     ggplot2::theme_bw( base_size=12)+
-    ggplot2::geom_hline(aes(yintercept = mean(lof.det)+4*sd(lof.det),col='red'))
+    ggplot2::geom_hline(ggplot2::aes(yintercept = mean(lof.det)+4*sd(lof.det),col='red'))
   #    lines(x = c(0, nrow(spambase)), y=c(0, mean(lof.det)+4*sd(lof.det)), ylim=c(0,300), col='red')
   return(lof.det)
 }
@@ -73,27 +73,25 @@ d.b.outlier_detection <- function(spambase.scaled){
 #' one varialbe also an outlier for the whole dataset depends on its relative constellation in the
 #' multi-dimensional space.
 #' @author Lijin Lan (construct of function and documentation)
-d.c.outlier_variable<-function(){
+d.c.outlier_variable<-function(lof.det){
   # derive names from database
   names<-names(spambase[,1:57])[1:9]
   # set the ploting area with 9 sections
   layout(matrix(1:9, ncol = 3))
-  opar=par(mfrow=c(3,3))
   Index<-1:nrow(spambase)
   # plot the first 9 variables from the dataset as examples
   for(ii in 1:9){
     # construct a dataframe for ggplot
     gg.df<-data.frame(names=as.factor(seq(1,nrow(spambase))), make=spambase[,ii])
     # actually plot the data
-    print(ggplot2::ggplot(gg.df, aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
+    print(ggplot2::ggplot(gg.df, ggplot2::aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
             ggplot2::geom_point(col='black', pch=1) +
-            ggplot2::geom_text(aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0, size=8)+
+            ggplot2::geom_text(ggplot2::aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0, size=8)+
             ggplot2::labs(x = names[ii], y = "")+
             ggplot2::theme_bw( base_size=12)+
-            ggplot2::geom_hline(aes(yintercept = mean(spambase[,ii])+4*sd(spambase[,ii]),col='red')))
+            ggplot2::geom_hline(ggplot2::aes(yintercept = mean(spambase[,ii])+4*sd(spambase[,ii]),col='red')))
   }
-  # remove irrelevant variables generated in the loop
-  remove(list=names)
+  layout(1)
 }
 
 
@@ -101,7 +99,7 @@ d.c.outlier_variable<-function(){
 #' @description This function delete observations in the original dataset according to the results of
 #' outlier detection.
 #' @author Lijin Lan (construct of function and documentation)
-d.d.outlier_delete<- function(lof.det){
+d.d.outlier_delete<- function(spambase.scaled, lof.det){
   # After visually inspect the outliers, we select an appropriate threshold for deleting outliers.
   # In our case, it is 4 times standard deviation
   spambase.scaled.out<-spambase.scaled[-which(lof.det>(mean(lof.det)+3.5*sd(lof.det))),]

@@ -2,7 +2,7 @@
 % Please edit documentation in R/main.R
 \name{a.a.main}
 \alias{a.a.main}
-\title{Function for introducing package content}
+\title{MAIN}
 \usage{
 a.a.main()
 }
@@ -33,15 +33,24 @@ The task of this function is to start the whole analyzation process of the \href
   }
   \item outlier detection
     \enumerate{
-      \item \code{\link{d.a.outlier_detection}}
+      \item \code{\link{d.a.outlier_handle}}
+      \item \code{\link{d.b.outlier_detection}}
+      \item \code{\link{d.c.outlier_variable}}
+      \item \code{\link{d.d.outlier_delete}}
   }
   \item outlier detection
     \enumerate{
       \item \code{\link{e.a.pca}}
+      \item \code{\link{e.b.pca.analyze}}
+      \item \code{\link{e.c.factor.analysis}}
   }
   \item outlier detection
     \enumerate{
       \item \code{\link{f.a.clustering}}
+      \item \code{\link{f.b.hierarchical}}
+      \item \code{\link{f.c.kmeans}}
+      \item \code{\link{f.d.cmeans}}
+      \item \code{\link{f.f.plotWSSVsK}}
   }
 }
 Further more there is the util script for supporting the other scritps:

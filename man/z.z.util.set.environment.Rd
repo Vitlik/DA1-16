@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{z.z.util.set.environment}
 \alias{z.z.util.set.environment}
-\title{Setting the environment}
+\title{Util - Environment Setting}
 \usage{
 z.z.util.set.environment()
 }

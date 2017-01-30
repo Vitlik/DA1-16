@@ -2,12 +2,19 @@
 % Please edit documentation in R/exploratory.R
 \name{b.d.exploratory.correlations}
 \alias{b.d.exploratory.correlations}
-\title{BBBBB}
+\title{Exploratory - Correlations}
 \usage{
 b.d.exploratory.correlations()
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+Creates three plots with corrplot funtion from corrplot package.
+
+The plots show correlations between the dimension of spam and non-spam mail and the combined
+observations.
+
+The file is named: "out/1. Exploratory - Correlation matrix.pdf"
 }
 \author{
 Vitali Friesen

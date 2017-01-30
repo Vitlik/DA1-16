@@ -2,12 +2,49 @@
 % Please edit documentation in R/normality.R
 \name{c.a.normality}
 \alias{c.a.normality}
-\title{C}
+\title{Normality}
 \usage{
 \method{c}{a.normality}()
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+This functions wraps the normality analysis and transformation of spambase.
+
+A normal distribution enables the usage of several methods which require normality.
+
+But finding a normal distribution in data derived from the reality is quite unlikely and
+even though several other distribution can be transformed to get close to normality, finding
+these in data from quality is also unlikely.
+
+The normality check starts with creation of Q-Q-Plots for each dimension, showing that none of
+the dimensions is close normal distributed.
+
+For the sake of completeness normality was also checked over all dimensions as a whole.
+This was done by creating a chi square plot for normal distribution which again shows the same
+as the univariate plots.
+
+Maybe an other distribution is in place with the exponential one being suspected looking at the Q-Q-Plots. Therefore a Cullen and Frey graph was plotted for variable showing that the all data far from being exponential distributed. Some dimensions come close to the gamma distribution which is the higher order of an exponential distribution.
+But still the distribution seems to not fit into any known distribution (at least regarding the dataset as a whole).
+Specific subset may fit into an exisiting distribution.
+
+The main obstacle of having an exponential distribution seem to be the substantial amount of zero values in each dimension.
+
+The dimension "will" was chosen because it's distribution is closest to being exponential distributed compared to all other dimensions. "will" also appears to have one of the smallest amounts of zeros in its observations which support the hypothesis that the zeros are changing the distribution from exponential to something unknown.
+
+Thus one option is the deletion of all/most observations being zero.
+But this is viable for data that would get biased too much that way.
+In this case most of dimensions consist of huge amounts of zero values and thus are highly affected by the deletion of zeros.
+
+Even though the deletion of rows in this framework the transformation to normality was rejected, a transformation of a dimension was done via this approach to prove that the distributions become exponention by removing all zero observation. As mentioned this will be done with the "will" dimension in the function of this script.
+
+Four functions are executed here:
+\enumerate{
+  \item \code{\link{c.b.qqplots}}
+  \item \code{\link{c.c.chisquare}}
+  \item \code{\link{c.d.distribution_test}}
+  \item \code{\link{c.e.norm_transform}}
+}
 }
 \author{
 Vitali Friesen

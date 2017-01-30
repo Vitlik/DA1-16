@@ -2,13 +2,15 @@
 % Please edit documentation in R/main.R
 \name{a.b.main.spambase.analysis}
 \alias{a.b.main.spambase.analysis}
-\title{Meta function for starting meta steps of the analysis}
+\title{MAIN - Spambase Analysis}
 \usage{
 a.b.main.spambase.analysis()
 }
 \description{
 To get (back) to the overview of all steps and functions use this link:
 \code{\link{a.a.main}}
+
+Meta function for starting meta steps of the analysis.
 
 This function wraps all the meta steps for analyzing the data.
 \enumerate{

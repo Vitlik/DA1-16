@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{z.b.util.diff}
 \alias{z.b.util.diff}
-\title{Support function for \code{\link{z.a.util.gen.summary}}}
+\title{Util - DIfference}
 \usage{
 z.b.util.diff(vec1, vec2)
 }
@@ -16,6 +16,8 @@ A character vector containing the relative sizes. Special cases for \code{0} ele
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+Support function for \code{\link{z.a.util.gen.summary}}
 
 Takes two numeric vectors and calculates the relative size of the numbers at the same positions.
 }

@@ -2,12 +2,15 @@
 % Please edit documentation in R/normality.R
 \name{c.d.distribution_test}
 \alias{c.d.distribution_test}
-\title{CCCC}
+\title{Normality - Distribution Test}
 \usage{
 \method{c}{d.distribution_test}()
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+This function creates a Cullen and Frey graph for each dimension. These graphs can support the
+identification of distributions.
 }
 \author{
 Vitali Friesen

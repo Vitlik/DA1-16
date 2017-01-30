@@ -2,14 +2,16 @@
 % Please edit documentation in R/util.R
 \name{z.d.loglik}
 \alias{z.d.loglik}
-\title{Likelihood function for boxcox transformation}
+\title{Util - Log-likelihood}
 \usage{
 z.d.loglik(lambda, data)
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 
-Likelihood function to calculate how close the boxcox transformation is to being normal.
+Log-likelihood function for boxcox transformation
+
+It calculates how close the boxcox transformation is to being normal.
 
 Can be used to be optimized to find optimal lambda.
 }

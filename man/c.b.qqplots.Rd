@@ -2,12 +2,15 @@
 % Please edit documentation in R/normality.R
 \name{c.b.qqplots}
 \alias{c.b.qqplots}
-\title{CC}
+\title{Normality - Q-Q-Plots}
 \usage{
 \method{c}{b.qqplots}()
 }
 \description{
-To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+To get (back) to the overview of all steps and functions use this link:
+\code{\link{a.a.main}}
+
+This function creates 57 (all dimensions without classification) Q-Q-Plots for normality and stores them in the file: "out/2. Normality - Normality QQ-Plots.pdf"
 }
 \author{
 Vitali Friesen

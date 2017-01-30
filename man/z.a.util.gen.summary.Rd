@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{z.a.util.gen.summary}
 \alias{z.a.util.gen.summary}
-\title{Generate a summary of given data or compare two}
+\title{Util - Generate Summary}
 \usage{
 z.a.util.gen.summary(frame1, f1_type, frame2 = NULL, ...)
 }
@@ -22,6 +22,8 @@ For two data.frames it contains 20 rows with 6 rows looking explained above, ano
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+Generate a summary of given data or compare two
 
 This function generates a summary of a data.frame with one or two given tables with data.
 Each column/attribute of the given data will be summarized individually.

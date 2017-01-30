@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{z.c.boxcox}
 \alias{z.c.boxcox}
-\title{A function for transforming data with boxcox}
+\title{Util - Boxcox}
 \usage{
 z.c.boxcox(data, lambda)
 }
@@ -17,7 +17,10 @@ The transformed data
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 
-This function transforms data with the boxcox transformation to reduce scews.
+A function for transforming data with boxcox
+
+This function transforms data with the boxcox transformation to reduce the scewness of a random
+variable..
 }
 \author{
 Vitali Friesen (Credits: Tutorial of Data Analytics 2016 by PROF. DR. HEIKE TRAUTMANN )

@@ -2,7 +2,7 @@
 % Please edit documentation in R/exploratory.R
 \name{b.a.exploratory.data_analysis}
 \alias{b.a.exploratory.data_analysis}
-\title{Exploratory data analysis wrapper function}
+\title{Exploratory - Data Analysis Wrapper}
 \usage{
 b.a.exploratory.data_analysis()
 }

@@ -2,12 +2,15 @@
 % Please edit documentation in R/normality.R
 \name{c.c.chisquare}
 \alias{c.c.chisquare}
-\title{CCC}
+\title{Normality - Chi Square}
 \usage{
 \method{c}{c.chisquare}()
 }
 \description{
-To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+To get (back) to the overview of all steps and functions use this link:
+\code{\link{a.a.main}}
+
+c.c.chisquare() creates a chi square plot for checking the normality of all dimensions combined and stores it in: "out/2. Normality - Normality chi^2-Plot.pdf"
 }
 \author{
 Vitali Friesen

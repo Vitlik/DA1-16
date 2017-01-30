@@ -9,8 +9,14 @@ b.c.exploratory.str_summary()
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 
+Create a txt file with the output of str(spambase) into the folder "out/" named: "1.
+Exploratory - str.txt"
+
 Create csv files with different information of about the data (min, 25% quantile, median, mean,
-75% quantile, max)
+75% quantile, max) with the name: "1. Exploratory - summary.csv"
+
+Additionally it creates another summary file where summaries of spam and non-spam are compared:
+"1. Exploratory - summary - compare.csv"
 }
 \author{
 Vitali Friesen

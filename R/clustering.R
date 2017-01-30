@@ -58,7 +58,7 @@ f.b.hierarchical <- function(spambase.scaled.out){
 #' accuracy of the clustering.
 #'
 #' @author Lijin Lan
-f.c.kmeans <- function(spambase.scaled.out){
+f.c.kmeans <- function(spambase.scaled.out, spambase.scaled.new){
   # K-means clustering
   k.cluster<-kmeans(spambase.scaled.new, centers= 2, nstart = 40, algorithm = 'Lloyd',
                     iter.max = 50)

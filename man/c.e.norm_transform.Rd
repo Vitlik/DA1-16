@@ -2,12 +2,18 @@
 % Please edit documentation in R/normality.R
 \name{c.e.norm_transform}
 \alias{c.e.norm_transform}
-\title{CCCCC}
+\title{Normality - Normality Transformation}
 \usage{
 \method{c}{e.norm_transform}()
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+This function computes an examplary data transformation with the dimension "will" to check the possibility to normalize the dimensions with removed zero observations.
+
+The results show that the normality of the distribution could be improved tremendously even it's still far from normal. The resulting p-value of the Shapiro-Wilk-Test could be increased from something like x*10^(-48) to x*10^(-8).
+
+\code{\link{c.a.normality}}
 }
 \author{
 Vitali Friesen

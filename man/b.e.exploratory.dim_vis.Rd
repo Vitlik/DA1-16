@@ -2,12 +2,25 @@
 % Please edit documentation in R/exploratory.R
 \name{b.e.exploratory.dim_vis}
 \alias{b.e.exploratory.dim_vis}
-\title{BBBBBB}
+\title{Exploratory - Dimension Visualization}
 \usage{
 b.e.exploratory.dim_vis()
 }
 \description{
+To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 
+This function simply creates several plots to better understand the dimensions of the data.
+
+First plot is a barplot of the class dimension to grasp the amount of non-spam and spam
+classifications. The plot can be find in "out/1. Exploratory - Barplot of email numbers.pdf"
+
+The second plot creates Histograms for each dimension to show the distributions of observations.
+It is stored in: "out/1. Exploratory - Histograms.pdf"
+
+The third plot contains the scatterplots of all pairs of dimensions which had a correlation of
+at least 0.2 in descending order which puts the plots of dimensions with the highest correlation
+to the top.
+The result is stored in: "out/1. Exploratory - Scatterplots of highly correlated dimensions.pdf"
 }
 \author{
 Vitali Friesen
