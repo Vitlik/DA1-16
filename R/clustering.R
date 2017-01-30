@@ -53,8 +53,9 @@ f.b.hierarchical <- function(spambase.scaled.out){
 #' @title Clustering - K-Means
 #' @description To get (back) to the overview of all steps and functions use this link:
 #' \code{\link{a.a.main}}
-#'
-#'
+#' The function conducts the K-Means clustering and shows the percentage of spam or nonspam emails.
+#' It also compares the clustering resulst with the classification in the original data to validate the
+#' accuracy of the clustering.
 #'
 #' @author Lijin Lan
 f.c.kmeans <- function(spambase.scaled.out){
@@ -69,8 +70,8 @@ f.c.kmeans <- function(spambase.scaled.out){
 #' @title Clustering - C-Means
 #' @description To get (back) to the overview of all steps and functions use this link:
 #' \code{\link{a.a.main}}
-#'
-#'
+#' The function conducts the fuzzy clustering method c-means and validates the result at the end by
+#' matching the classification in the original dataset.
 #'
 #' @author Lijin Lan
 f.d.cmeans <- function(spambase.scaled.out, spambase.scaled.new){
@@ -83,10 +84,9 @@ f.d.cmeans <- function(spambase.scaled.out, spambase.scaled.new){
 #' @title Clustering - plotWSSVsK
 #' @description To get (back) to the overview of all steps and functions use this link:
 #' \code{\link{a.a.main}}
+#' Plot within sum of squares vs k to examine the clustering process
 #'
-#' Plot within sum of squares vs k
-#'
-#' @author Lijin Lan
+#' @author Lijin Lan (cited from the DA exercise)
 f.e.plotWSSVsK <- function(data) {
   n = nrow(data) # determine possible numbers for K*
   Ks = 1:20
