@@ -5,7 +5,7 @@
 #'
 #'
 #'
-#' @author Lijin Han, Evelyn Navarrete, Vitali Friesen (structure)
+#' @author Lijin Han, Evelyn Navarrete
 e.a.pca <- function(lof.det){
 
 }
