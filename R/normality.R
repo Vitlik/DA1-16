@@ -4,6 +4,14 @@
 #'
 #'
 #'
+#' It executes four functions:
+#' \enumerate{
+#'   \item \code{\link{c.b.qqplots}}
+#'   \item \code{\link{c.c.chisquare}}
+#'   \item \code{\link{c.d.distribution_test}}
+#'   \item \code{\link{c.e.norm_transform}}
+#' }
+#'
 #' @author Vitali Friesen
 c.a.normality <- function(){
 

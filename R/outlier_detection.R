@@ -11,13 +11,13 @@
 #' technical errors like measurement error of sensor or errors on the harddrive.
 #' The latter ones can disturb method to find the distributions for given data while the former is
 #' a legitimate part of the observations.
-#' Unfortunately these cannot be distinguished
+#' Unfortunately these cannot be distinguished and therefore need to be treated carefully.
 #'
-#' Nevertheless outliers
-#'
-#' @author Vitali Friesen (structure)
+#' @author Vitali Friesen (structure, documentation)
 d.a.outlier_detection <- function(){
   #
+
+
   # outlier.scores <- DMwR::lofactor(noclasses, k=5)
   # outliers <- order(outlier.scores, decreasing=T)[1:(nrow(noclasses)*0.01)]
   #

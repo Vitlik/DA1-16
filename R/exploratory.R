@@ -19,7 +19,6 @@
 #'   \item \code{\link{b.e.exploratory.dim_vis}}
 #' }
 #'
-#'
 #' @author Vitali Friesen
 b.a.exploratory.data_analysis <- function(){
   # structure the data into the structural groups it contains
@@ -142,7 +141,14 @@ b.d.exploratory.correlations <- function(){
 }
 
 #' @title Exploratory - Dimension Visualization
-#' @description
+#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#' This function simply creates several plots to better understand the dimensions of the data.
+#'
+#' First plot is a barplot of the class dimension to grasp the amount of non-spam and spam
+#' classifications. The plot can be find in "out/1. Exploratory - Barplot of email numbers.pdf"
+#'
+#' The second
 #'
 #' @author Vitali Friesen
 b.e.exploratory.dim_vis <- function(){
