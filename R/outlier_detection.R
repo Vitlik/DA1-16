@@ -24,6 +24,8 @@ d.a.outlier_handle <- function(){
 
 }
 
+
+
 d.b.outlier_detection <- function(){
   # inspect whether there are raws with only zeros
   sum(apply(spambase.scaled,1,mean)==0)
@@ -38,9 +40,9 @@ d.b.outlier_detection <- function(){
   plot.new()
   ggplot(gg.df, aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
     geom_point(col='black', pch=1) +
-    geom_text(aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0)+
+    geom_text(aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0, size=8)+
     labs(title= "Outlier Detection", x = "Observations", y = "")+
-    theme(plot.title = element_text(hjust=0.5))+
+    theme_bw( base_size=12)+
     geom_hline(aes(yintercept = mean(lof.det)+4*sd(lof.det),col='red'))
   #    lines(x = c(0, nrow(spambase)), y=c(0, mean(lof.det)+4*sd(lof.det)), ylim=c(0,300), col='red')
   return(lof.det)

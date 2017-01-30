@@ -169,3 +169,49 @@ c.e.norm_transform <- function(){
 
   dev.off()
 }
+
+#' @title Scaling - Standardize data
+#' @description In the original dataset, we have variables of different scales. And this is not appropriate
+#' for the following analysis, such as factor analysis and clustering. Therefore we transform all variables
+#' to on the same scale.
+c.f.scaling<-function(){
+  # scale the data with the function scale
+  spambase.scaled<-scale(spambase[1:57], center=TRUE, scale=TRUE)
+  # convert the result into a dataframe
+  spambase.scaled<-data.frame(spambase.scaled)
+  return(spambase.scaled)
+}
+
+#'@title Plot comparison - plot the scaled and unscaled data
+#'@description The function plots the bar chart to roughly illustrate how different the variables are
+#'before and after scaling.
+#'@author Lijin Lan (construct of function and documentation)
+c.g.scaling.plot<-function(spambase.scaled){
+  # use a loop to load all names with data before scaling
+  res.bar<-vector()
+  names<-colnames(spambase[,1:57])
+  for(ii in 1:57){
+    temp<-range(spambase[,ii])
+    assign(names[ii], temp)
+  }
+  names.v<-mget(names)
+  res.bar<-do.call(rbind, names.v)
+  # remove all irrelevant variables that are generated in the loop
+  remove(list=names)
+  remove(temp)
+
+  # use a loop to load all names with scaled data
+  res.bar1<-vector()
+  names<-colnames(spambase.scaled[,1:57])
+  for(ii in 1:57){
+    temp<-range(spambase.scaled[,ii])
+    assign(names[ii], temp)
+  }
+  names.v<-mget(names)
+  res.bar1<-do.call(rbind, names.v)
+  remove(list=names)
+  remove(temp)
+  # set the potting environment to two rows, so that the bardiagrams can be better compared
+  par(mfrow=c(2,1))
+  barplot(res.bar1[,2])
+}
