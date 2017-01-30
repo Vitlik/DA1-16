@@ -22,10 +22,10 @@
 #' }
 #'
 #' @author Lijin Lan (construct of function), Vitali Friesen (structure, documentation)
-d.a.outlier_handle <- function(){
+d.a.outlier_handle <- function(spambase.scaled){
 
   # detect outliers in the dataset and plot them
-  tmp <- d.b.outlier_detection()
+  tmp <- d.b.outlier_detection(spambase.scaled)
 
   # plot outliers of each variable
   d.c.outlier_variable()
@@ -41,7 +41,7 @@ d.a.outlier_handle <- function(){
 #' the regular data.
 #' @author Lijin Lan (construct of function and documentation)
 
-d.b.outlier_detection <- function(){
+d.b.outlier_detection <- function(spambase.scaled){
   # inspect whether there are raws with only zeros
   sum(apply(spambase.scaled,1,mean)==0)
 

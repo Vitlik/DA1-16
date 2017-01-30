@@ -74,13 +74,11 @@ f.c.kmeans <- function(spambase.scaled.out){
 #'
 #' @author Lijin Lan
 f.d.cmeans <- function(spambase.scaled.out, spambase.scaled.new){
-  # C-means clustering
+
   c.cluster <- e1071::cmeans(spambase.scaled.new, iter.max = 20, centers = 2,
                              dist = 'euclidean', method = 'cmeans', m = 1.2)
   sum(c.cluster$cluster-1==spambase[rownames(spambase.scaled.out), 'class'])/nrow(spambase)
 }
-
-
 
 #' @title Clustering - plotWSSVsK
 #' @description To get (back) to the overview of all steps and functions use this link:

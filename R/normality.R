@@ -57,10 +57,12 @@ c.a.normality <- function(){
   c.e.norm_transform()
 
   # Scale the dataset
-  c.f.scaling()
+  spambase.scaled <- c.f.scaling()
 
   # plot dataset before and after scaling
-  c.g.scaling.plot()
+  c.g.scaling.plot(spambase.scaled)
+
+  return(spambase.scaled)
 }
 
 #' @title Normality - Q-Q-Plots

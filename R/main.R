@@ -102,11 +102,11 @@ a.b.main.spambase.analysis <- function(){
   cat("\n")
 
   message("2. Normality")
-  c.a.normality()
+  spambase.scaled <- c.a.normality()
   cat("\n")
 
   message("3. Outlier detection")
-  spambase.scaled.out <- d.a.outlier_handle()
+  spambase.scaled.out <- d.a.outlier_handle(spambase.scaled)
   cat("\n")
 
   message("4. Principal Component Analysis")
