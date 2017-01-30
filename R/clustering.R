@@ -3,7 +3,9 @@
 #' @description To get (back) to the overview of all steps and functions use this link:
 #' \code{\link{a.a.main}}
 #'
-#' This part start the clustering analysis
+#' This function starts the clustering analysis.
+#'
+#'
 #'
 #' Two functions are executed here:
 #' \enumerate{
@@ -30,7 +32,12 @@ f.a.clustering <- function(spambase.scaled.out, spambase.scaled.new){
 #' @description To get (back) to the overview of all steps and functions use this link:
 #' \code{\link{a.a.main}}
 #'
+#' Hierarchical clustering can help with several tasks in the data analysis.
 #'
+#' In General it can be used to determine the number of clusters.
+#' Furthermore the graphs of created by hierarchical clustering can also show outliers if the single linkage methdd is used.
+#' It can be used to see with the ward.D method if in our case two bigger clusters (non-spam and spam) are forming in the lower section of the graph  and which then get combined at late or the last intersection.
+#' That would suggest nicely distinguished clusters.
 #'
 #' @author Lijin Lan
 f.b.hierarchical <- function(spambase.scaled.out){
@@ -43,7 +50,7 @@ f.b.hierarchical <- function(spambase.scaled.out){
   par(opar)
 }
 
-#' @title Clustering - Hierarchical
+#' @title Clustering - K-Means
 #' @description To get (back) to the overview of all steps and functions use this link:
 #' \code{\link{a.a.main}}
 #'
@@ -59,7 +66,7 @@ f.c.kmeans <- function(spambase.scaled.out){
                                     'class'])/length(k.cluster$cluster)
 }
 
-#' @title Clustering - Hierarchical
+#' @title Clustering - C-Means
 #' @description To get (back) to the overview of all steps and functions use this link:
 #' \code{\link{a.a.main}}
 #'
