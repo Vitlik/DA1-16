@@ -18,16 +18,16 @@
 #' as the univariate plots.
 #'
 #' Maybe an other distribution is in place with the exponential one being suspected looking at the Q-Q-Plots. Therefore a Cullen and Frey graph was plotted for variable showing that the all data far from being exponential distributed. Some dimensions come close to the gamma distribution which is the higher order of an exponential distribution.
-#' But still the distribution seems to not fit into any known distribution (at least regarding thedataset as a whole).
+#' But still the distribution seems to not fit into any known distribution (at least regarding the dataset as a whole).
 #' Specific subset may fit into an exisiting distribution.
 #'
 #' The main obstacle of having an exponential distribution seem to be the substantial amount of zero values in each dimension.
 #'
-#' The dimension "will" was chosen because it's distribution is closest to being exponential distributed compared to all other dimensions. "will" also appears to have of one the smallest amounts of zeros in it's observations which support the hypothesis that the zeros are changing the distribution from exponential to something unknown.
+#' The dimension "will" was chosen because it's distribution is closest to being exponential distributed compared to all other dimensions. "will" also appears to have one of the smallest amounts of zeros in its observations which support the hypothesis that the zeros are changing the distribution from exponential to something unknown.
 #'
 #' Thus one option is the deletion of all/most observations being zero.
 #' But this is viable for data that would get biased too much that way.
-#' In in this case most of dimensions consist of huge amounts of zero values and thus are highly affected by the deletion of zeros.
+#' In this case most of dimensions consist of huge amounts of zero values and thus are highly affected by the deletion of zeros.
 #'
 #' Even though the deletion of rows in this framework the transformation to normality was rejected, a transformation of a dimension was done via this approach to prove that the distributions become exponention by removing all zero observation. As mentioned this will be done with the "will" dimension in the function of this script.
 #'
