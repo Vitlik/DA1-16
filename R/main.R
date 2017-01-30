@@ -43,7 +43,7 @@
 #'       \item \code{\link{f.b.hierarchical}}
 #'       \item \code{\link{f.c.kmeans}}
 #'       \item \code{\link{f.d.cmeans}}
-#'       \item \code{\link{f.f.plotWSSVsK}}
+#'       \item \code{\link{f.e.plotWSSVsK}}
 #'   }
 #' }
 #' Further more there is the util script for supporting the other scritps:
