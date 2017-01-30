@@ -83,14 +83,14 @@ b.b.exploratory.structure.data <- function(){
 #' @title Exploratory Structure Summary
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
-#' Create a txt file with the output of str(spambase) into the folder "out/" named: 1.
-#' Exploratory - str.txt
+#' Create a txt file with the output of str(spambase) into the folder "out/" named: "1.
+#' Exploratory - str.txt"
 #'
 #' Create csv files with different information of about the data (min, 25% quantile, median, mean,
-#' 75% quantile, max) with the name: 1. Exploratory - summary.csv
+#' 75% quantile, max) with the name: "1. Exploratory - summary.csv"
 #'
 #' Additionally it creates another summary file where summaries of spam and non-spam are compared:
-#' 1. Exploratory - summary - compare.csv
+#' "1. Exploratory - summary - compare.csv"
 #'
 #' @author Vitali Friesen
 b.c.exploratory.str_summary <- function(){
@@ -124,6 +124,8 @@ b.c.exploratory.str_summary <- function(){
 #' The plots show correlations between the dimension of spam and non-spam mail and the combined
 #' observations.
 #'
+#' The file is named: "out/1. Exploratory - Correlation matrix.pdf"
+#'
 #' @author Vitali Friesen
 b.d.exploratory.correlations <- function(){
   # correlation view
@@ -148,7 +150,13 @@ b.d.exploratory.correlations <- function(){
 #' First plot is a barplot of the class dimension to grasp the amount of non-spam and spam
 #' classifications. The plot can be find in "out/1. Exploratory - Barplot of email numbers.pdf"
 #'
-#' The second
+#' The second plot creates Histograms for each dimension to show the distributions of observations.
+#' It is stored in: "out/1. Exploratory - Histograms.pdf"
+#'
+#' The third plot contains the scatterplots of all pairs of dimensions which had a correlation of
+#' at least 0.2 in descending order which puts the plots of dimensions with the highest correlation
+#' to the top.
+#' The result is stored in: "out/1. Exploratory - Scatterplots of highly correlated dimensions.pdf"
 #'
 #' @author Vitali Friesen
 b.e.exploratory.dim_vis <- function(){

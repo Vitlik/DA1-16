@@ -7,8 +7,10 @@
 library(foreign)
 spambase <- read.arff(file = "data-raw/dataset_44_spambase_adjusted.arff")
 
-# remove duplicates as they distort the analysis
-spambase <- spambase[!duplicated(spambase),]
+# # duplicates could be removed for weighting all observations equally but the quality of
+# # clustering is higher with duplicates included. That suggests that the duplicates have
+# # positive impact on the cluster analysis.
+# spambase <- spambase[!duplicated(spambase),]
 
 # adjust datatype to original datatype which got lost during read
 spambase$capital_run_length_longest <- as.integer(spambase$capital_run_length_longest)

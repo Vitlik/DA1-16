@@ -166,7 +166,8 @@ z.b.util.diff <- function(vec1, vec2){
 #'
 #' A function for transforming data with boxcox
 #'
-#' This function transforms data with the boxcox transformation to reduce scews.
+#' This function transforms data with the boxcox transformation to reduce the scewness of a random
+#' variable..
 #'
 #' @param data The matrix or data.frame which gets transformed.
 #' @param lambda The intensity of the transformation.
@@ -180,10 +181,10 @@ z.c.boxcox <- function(data, lambda){
   return((data^lambda - 1) / lambda)
 }
 
-#' @title Util - Likelihood
+#' @title Util - Log-likelihood
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
-#' Likelihood function for boxcox transformation
+#' Log-likelihood function for boxcox transformation
 #'
 #' It calculates how close the boxcox transformation is to being normal.
 #'
