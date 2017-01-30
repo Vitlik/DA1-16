@@ -11,17 +11,21 @@
 #'   \item \code{\link{e.c.factor.analysis}}
 #' }
 #'
-#' @author Lijin Han, Evelyn Navarrete
+#' @author Lijin Lan, Evelyn Navarrete
 e.a.pca <- function(spambase.scaled.out){
 
+  #PCA & FA - Analyze the correlation and latent factors
   e.b.pca.analyze(spambase.scaled.out)
 
+  # factor analysis -- conduct factor analysis and replace variables with factors
   return(e.c.factor.analysis(spambase.scaled.out))
 }
 
-#' @title PCA & FA - PCA Analysis
-#' @description
-#'
+#' @title PCA & FA - Analyze the correlation and latent factors
+#' @description The function  firstly creates a correlation matrix and lists up variables, which are highly
+#' correlated with each other. The thereshold is empirically set to 0.5. In the end, the function conducts
+#' a principal component analysis to select the relevant factors while a screediagram is also generated
+#' to help to better identify the number.
 #' @author Lijin Lan
 e.b.pca.analyze <- function(spambase.scaled.out){
   ## combine higly correlated variables with PCA and factor analysis
@@ -36,14 +40,18 @@ e.b.pca.analyze <- function(spambase.scaled.out){
   high.c<-which(cor.mat>0.5, arr.ind = TRUE)
   rnames<-rownames(cor.mat)[high.c[,1]]
   cnames<-colnames(cor.mat)[high.c[,2]]
-  high.c<-cbind(rnames,cnames)
+  (high.c<-cbind(rnames,cnames))
 
   # inspect the number of latent factors
   res.pca<-princomp(spambase.scaled.out)
   screeplot(res.pca, npcs=57)
 }
 
-#'
+#' @title factor analysis -- conduct factor analysis
+#' @description The function firstly inspects the loading matrix, to see how each variables load on the factor.
+#' Consequently the function select those variables, which highly (loading>0.4) load on factors and replace them
+#' in the dataset with corresponding factors.
+#' @author Lijin
 e.c.factor.analysis <- function(spambase.scaled.out){
   # conduct the factor analysis and check out the loadings
   spam.factor<-factanal(spambase.scaled.out, factors = 4)
