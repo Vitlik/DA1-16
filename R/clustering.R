@@ -1,6 +1,7 @@
 
 #' @title Clustering
-#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#' @description To get (back) to the overview of all steps and functions use this link:
+#' \code{\link{a.a.main}}
 #'
 #' This part start the clustering analysis
 #'
@@ -25,7 +26,13 @@ f.a.clustering <- function(spambase.scaled.out, spambase.scaled.new){
 
 }
 
-#' @title
+#' @title Clustering - Hierarchical
+#' @description To get (back) to the overview of all steps and functions use this link:
+#' \code{\link{a.a.main}}
+#'
+#'
+#'
+#' @author Lijin Lan
 f.b.hierarchical <- function(spambase.scaled.out){
   methods = c("single","ward.D")
   opar = par(mfrow = c(1,2))
@@ -36,7 +43,13 @@ f.b.hierarchical <- function(spambase.scaled.out){
   par(opar)
 }
 
+#' @title Clustering - Hierarchical
+#' @description To get (back) to the overview of all steps and functions use this link:
+#' \code{\link{a.a.main}}
 #'
+#'
+#'
+#' @author Lijin Lan
 f.c.kmeans <- function(spambase.scaled.out){
   # K-means clustering
   k.cluster<-kmeans(spambase.scaled.new, centers= 2, nstart = 40, algorithm = 'Lloyd',
@@ -46,17 +59,29 @@ f.c.kmeans <- function(spambase.scaled.out){
                                     'class'])/length(k.cluster$cluster)
 }
 
+#' @title Clustering - Hierarchical
+#' @description To get (back) to the overview of all steps and functions use this link:
+#' \code{\link{a.a.main}}
 #'
+#'
+#'
+#' @author Lijin Lan
 f.d.cmeans <- function(spambase.scaled.out, spambase.scaled.new){
   # C-means clustering
-  c.cluster <- e1071::cmeans(spambase.scaled.new, iter.max = 20, centers = 2, dist = 'euclidean', method = 'cmeans', m = 1.2)
+  c.cluster <- e1071::cmeans(spambase.scaled.new, iter.max = 20, centers = 2,
+                             dist = 'euclidean', method = 'cmeans', m = 1.2)
   sum(c.cluster$cluster-1==spambase[rownames(spambase.scaled.out), 'class'])/nrow(spambase)
 }
 
 
 
 #' @title Clustering - plotWSSVsK
-#' plot within sum of squares vs k
+#' @description To get (back) to the overview of all steps and functions use this link:
+#' \code{\link{a.a.main}}
+#'
+#' Plot within sum of squares vs k
+#'
+#' @author Lijin Lan
 f.e.plotWSSVsK <- function(data) {
   n = nrow(data) # determine possible numbers for K*
   Ks = 1:20
