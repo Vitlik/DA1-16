@@ -29,10 +29,12 @@ d.a.outlier_handle <- function(){
 
 }
 
-#' @title Outliers - Detect
-#' @description
-#'
-#' @author Lijin Lan
+#' @title Outlier detection - detect outliers within a multivariate dataset
+#' @description The function firstly detect outliers with lofactor function, which returns outlier factors.
+#' Then the function draws a graphic to illustrate where those outliers are actually positioned compared to
+#' the regular data.
+#' @author Lijin Lan (construct of function and documentation)
+
 d.b.outlier_detection <- function(){
   # inspect whether there are raws with only zeros
   sum(apply(spambase.scaled,1,mean)==0)
@@ -49,18 +51,20 @@ d.b.outlier_detection <- function(){
   # value plus 4 times standard deviation are ploted in red with respective number.
   gg.df<-data.frame(names=as.factor(1:nrow(spambase)), lof.det)
   plot.new()
-  ggplot(gg.df, aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
-    geom_point(col='black', pch=1) +
-    geom_text(aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),
-                               as.character(gg.df[,1]),'')),hjust=0,vjust=0)+
-    labs(title= "Outlier Detection", x = "Observations", y = "")+
-    theme(plot.title = element_text(hjust=0.5))+
-    geom_hline(aes(yintercept = mean(lof.det)+4*sd(lof.det),col='red'))
-  # lines(x = c(0, nrow(spambase)), y=c(0, mean(lof.det)+4*sd(lof.det)), ylim=c(0,300), col='red')
+  ggplot2::ggplot(gg.df, aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
+    ggplot2::geom_point(col='black', pch=1) +
+    ggplot2::geom_text(aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0, size=8)+
+    ggplot2::labs(title= "Outlier Detection", x = "Observations", y = "")+
+    ggplot2::theme_bw( base_size=12)+
+    ggplot2::geom_hline(aes(yintercept = mean(lof.det)+4*sd(lof.det),col='red'))
+  #    lines(x = c(0, nrow(spambase)), y=c(0, mean(lof.det)+4*sd(lof.det)), ylim=c(0,300), col='red')
   return(lof.det)
 }
 
-#' @title Outliers - Delete
+#' @title Outlier deletion - delete outliers in the dataset
+#' @description This function delete observations in the original dataset according to the results of
+#' outlier detection.
+#' @author Lijin Lan (construct of function and documentation)
 d.c.outlier_delete<- function(lof.det){
   # After visually inspect the outliers, we select an appropriate threshold for deleting outliers.
   # In our case, it is 4 times standard deviation
