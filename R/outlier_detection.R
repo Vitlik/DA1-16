@@ -61,11 +61,41 @@ d.b.outlier_detection <- function(){
   return(lof.det)
 }
 
+#' @title Outlier variable - plot outliers of each variable
+#' @description The function plots outliers of each variable to show, that outliers on the dimesion of
+#' one variable are not necessarily outliers in a multiple-dimensional construct. Whether an outlier of
+#' one varialbe also an outlier for the whole dataset depends on its relative constellation in the
+#' multi-dimensional space.
+#' @author Lijin Lan (construct of function and documentation)
+d.c.outlieer_variable<-function(){
+  # derive names from database
+  names<-names(spambase[,1:57])[1:9]
+  # set the ploting area with 9 sections
+  layout(matrix(1:9, ncol = 3))
+  opar=par(mfrow=c(3,3))
+  Index<-1:nrow(spambase)
+  # plot the first 9 variables from the dataset as examples
+  for(ii in 1:9){
+    # construct a dataframe for ggplot
+    gg.df<-data.frame(names=as.factor(seq(1,nrow(spambase))), make=spambase[,ii])
+    # actually plot the data
+    print(ggplot2::ggplot(gg.df, aes(x=gg.df[,1], y=gg.df[,2], col="black", label=gg.df[,1]))+
+            ggplot2::geom_point(col='black', pch=1) +
+            ggplot2::geom_text(aes(label=ifelse(gg.df[,2]>(mean(lof.det)+4*sd(lof.det)),as.character(gg.df[,1]),'')),hjust=0,vjust=0, size=8)+
+            ggplot2::labs(x = names[ii], y = "")+
+            ggplot2::theme_bw( base_size=12)+
+            ggplot2::geom_hline(aes(yintercept = mean(spambase[,ii])+4*sd(spambase[,ii]),col='red')))
+  }
+  # remove irrelevant variables generated in the loop
+  remove(list=names)
+}
+
+
 #' @title Outlier deletion - delete outliers in the dataset
 #' @description This function delete observations in the original dataset according to the results of
 #' outlier detection.
 #' @author Lijin Lan (construct of function and documentation)
-d.c.outlier_delete<- function(lof.det){
+d.d.outlier_delete<- function(lof.det){
   # After visually inspect the outliers, we select an appropriate threshold for deleting outliers.
   # In our case, it is 4 times standard deviation
   spambase.scaled.out<-spambase.scaled[-which(lof.det>(mean(lof.det)+3.5*sd(lof.det))),]
