@@ -1,3 +1,4 @@
+temp1 <- function(){
 library(ggplot2)
 library(ggfortify)
 library(methods)
@@ -199,3 +200,6 @@ sum(k.cluster.raw$cluster!=spambase[rownames(spambase.scaled.out), 'class'])/nro
 
 c.cluster<-cmeans(spambase.scaled.out, iter.max = 20, centers = 2, dist = 'euclidean', method = 'cmeans', m = 2)
 sum(c.cluster$cluster-1==spambase[rownames(spambase.scaled.out), 'class'])/nrow(spambase)
+
+
+}

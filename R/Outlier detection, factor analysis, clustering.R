@@ -1,3 +1,4 @@
+temp2 <- function(){
 library(grid)
 library(DMwR)
 library(ggplot2)
@@ -100,3 +101,4 @@ points(Ks, exp.tot.wss, col = "blue")
 }
 
 plotWSSVsK(spambase.scaled.out)
+}
