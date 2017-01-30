@@ -2,12 +2,15 @@
 % Please edit documentation in R/exploratory.R
 \name{b.c.exploratory.str_summary}
 \alias{b.c.exploratory.str_summary}
-\title{BBBB}
+\title{Exploratory Structure Summary}
 \usage{
 b.c.exploratory.str_summary()
 }
 \description{
 To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+
+Create csv files with different information of about the data (min, 25% quantile, median, mean,
+75% quantile, max)
 }
 \author{
 Vitali Friesen

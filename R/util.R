@@ -1,6 +1,8 @@
 
-#' @title Generate a summary of given data or compare two
+#' @title Util - Generate Summary
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#' Generate a summary of given data or compare two
 #'
 #' This function generates a summary of a data.frame with one or two given tables with data.
 #' Each column/attribute of the given data will be summarized individually.
@@ -122,8 +124,10 @@ z.a.util.gen.summary <- function(frame1, f1_type, frame2 = NULL, ...){
   }
 }
 
-#' @title Support function for \code{\link{z.a.util.gen.summary}}
+#' @title Util - DIfference
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#' Support function for \code{\link{z.a.util.gen.summary}}
 #'
 #' Takes two numeric vectors and calculates the relative size of the numbers at the same positions.
 #'
@@ -157,8 +161,10 @@ z.b.util.diff <- function(vec1, vec2){
   )
 }
 
-#' @title A function for transforming data with boxcox
+#' @title Util - Boxcox
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#'
+#' A function for transforming data with boxcox
 #'
 #' This function transforms data with the boxcox transformation to reduce scews.
 #'
@@ -174,10 +180,12 @@ z.c.boxcox <- function(data, lambda){
   return((data^lambda - 1) / lambda)
 }
 
-#' @title Likelihood function for boxcox transformation
+#' @title Util - Likelihood
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
-#' Likelihood function to calculate how close the boxcox transformation is to being normal.
+#' Likelihood function for boxcox transformation
+#'
+#' It calculates how close the boxcox transformation is to being normal.
 #'
 #' Can be used to be optimized to find optimal lambda.
 #'
@@ -190,7 +198,7 @@ z.d.loglik = function(lambda, data) {
   return((-n/2) * a + (lambda - 1) * b)
 }
 
-#' @title Setting the environment
+#' @title Util - Environment Setting
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
 #' This function simply sets some environment variables so they can be used across the package.

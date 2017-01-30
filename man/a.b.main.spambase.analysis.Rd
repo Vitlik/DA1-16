@@ -7,15 +7,20 @@
 a.b.main.spambase.analysis()
 }
 \description{
-To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+To get (back) to the overview of all steps and functions use this link:
+\code{\link{a.a.main}}
 
 This function wraps all the meta steps for analyzing the data.
 \enumerate{
-  \item Explore basic structure of the data
+  \item Load environment (\code{\link{z.z.util.set.environment}})
+  \item Explore basic structure of the data (\code{\link{b.a.exploratory.data_analysis}})
   \item Check for normality in the data and try to transform to it
-  \item Search for possible outliers
+  (\code{\link{c.a.normality}})
+  \item Search for possible outliers (\code{\link{d.a.outlier_detection}})
   \item Try to reduce dimensionality with principal component analysis
+  (\code{\link{e.a.pca}})
   \item Cluster data to detect similarites in spam mail and in non-spam mails
+  (\code{\link{f.a.clustering}})
 }
 
 Each step will be further explained in the corresponding function descriptions

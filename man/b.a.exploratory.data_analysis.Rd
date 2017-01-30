@@ -7,9 +7,24 @@
 b.a.exploratory.data_analysis()
 }
 \description{
-To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+To get (back) to the overview of all steps and functions use this link:
+\code{\link{a.a.main}}
 
 This is a wrapper function for the whole exploratory data analysis step.
+
+First the data is stored in different variables which will then be accessable from the
+environment.
+
+Then different visualizations are created which are summaries, correlations and dimension
+visualization.
+
+It executes four functions:
+\enumerate{
+  \item \code{\link{b.b.exploratory.structure_data}}
+  \item \code{\link{b.c.exploratory.str_summary}}
+  \item \code{\link{b.d.exploratory.correlations}}
+  \item \code{\link{b.e.exploratory.dim_vis}}
+}
 }
 \author{
 Vitali Friesen

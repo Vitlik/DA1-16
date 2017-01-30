@@ -1,5 +1,5 @@
 
-#' @title C
+#' @title Normality
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
 #'
@@ -22,7 +22,7 @@ c.a.normality <- function(){
   c.e.norm_transform()
 }
 
-#' @title CC
+#' @title Normality - Q-Q-Plots
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
 #'
@@ -41,7 +41,7 @@ c.b.qqplots <- function(){
   cat("Normality Q-Q-Plots created\n")
 }
 
-#' @title CCC
+#' @title Normality - Chi Square
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
 #'
@@ -67,7 +67,7 @@ c.c.chisquare <- function(){
   cat("Normality chi^2-Plot created\n")
 }
 
-#' @title CCCC
+#' @title Normality - Distribution Test
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
 #'
@@ -85,7 +85,7 @@ c.d.distribution_test <- function(){
   cat("Cullen and Frey graphs created\n")
 }
 
-#' @title CCCCC
+#' @title Normality - Normality Transformation
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
 #'

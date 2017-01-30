@@ -1,38 +1,55 @@
 
-#' @title Exploratory data analysis wrapper function
-#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#' @title Exploratory - Data Analysis Wrapper
+#' @description To get (back) to the overview of all steps and functions use this link:
+#' \code{\link{a.a.main}}
 #'
 #' This is a wrapper function for the whole exploratory data analysis step.
 #'
+#' First the data is stored in different variables which will then be accessable from the
+#' environment.
+#'
+#' Then different visualizations are created which are summaries, correlations and dimension
+#' visualization.
+#'
+#' It executes four functions:
+#' \enumerate{
+#'   \item \code{\link{b.b.exploratory.structure_data}}
+#'   \item \code{\link{b.c.exploratory.str_summary}}
+#'   \item \code{\link{b.d.exploratory.correlations}}
+#'   \item \code{\link{b.e.exploratory.dim_vis}}
+#' }
+#'
+#'
 #' @author Vitali Friesen
 b.a.exploratory.data_analysis <- function(){
-  # structure the data into the groups it contains
-  b.b.exploratory.structure_data()
+  # structure the data into the structural groups it contains
+  b.b.exploratory.structure.data()
 
   # write structure and summary information to files
   b.c.exploratory.str_summary()
 
-  #
+  # create correlation plots
   b.d.exploratory.correlations()
 
-  #
+  # visualize the single dimensions/attributes of the data
   b.e.exploratory.dim_vis()
 }
 
-#' @title Structure the spambase data
-#' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
+#' @title Exploratory - Structure Data
+#' @description To get (back) to the overview of all steps and functions use this link:
+#' \code{\link{a.a.main}}
 #'
-#' Create an environment variable \code{e} which ...
+#' It creates an environment variable \code{e} which stores all types types in its own variable.
 #'
 #' @author Vitali Friesen
-b.b.exploratory.structure_data <- function(){
+b.b.exploratory.structure.data <- function(){
   par(mar=c(4.1,5.1,4.1,2.1))
 
   e <<- baseenv()
 
   # denotes whether the e-mail was considered spam (1) or not (0)
-  e$classes <- spambase[, 58, drop = F]
-  e$noclasses <- spambase[, -58, drop = F]
+  e$classes <- spambase[, 58]
+  e$noclasses <- spambase[, -58]
   e$allspam <- spambase[spambase[,58]==1, -58]
   e$allnospam <- spambase[spambase[,58]==0, -58]
 
@@ -64,10 +81,17 @@ b.b.exploratory.structure_data <- function(){
   e$CAP.length_total.nospam <- spambase[spambase[,58]==0, 57, drop = F]
 }
 
-#' @title BBBB
+#' @title Exploratory Structure Summary
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
+#' Create a txt file with the output of str(spambase) into the folder "out/" named: 1.
+#' Exploratory - str.txt
 #'
+#' Create csv files with different information of about the data (min, 25% quantile, median, mean,
+#' 75% quantile, max) with the name: 1. Exploratory - summary.csv
+#'
+#' Additionally it creates another summary file where summaries of spam and non-spam are compared:
+#' 1. Exploratory - summary - compare.csv
 #'
 #' @author Vitali Friesen
 b.c.exploratory.str_summary <- function(){
@@ -93,10 +117,13 @@ b.c.exploratory.str_summary <- function(){
   cat("Summary written\n")
 }
 
-#' @title BBBBB
+#' @title Exploratory - Correlations
 #' @description To get (back) to the overview of all steps and functions use this link: \code{\link{a.a.main}}
 #'
+#' Creates three plots with corrplot funtion from corrplot package.
 #'
+#' The plots show correlations between the dimension of spam and non-spam mail and the combined
+#' observations.
 #'
 #' @author Vitali Friesen
 b.d.exploratory.correlations <- function(){
@@ -114,7 +141,7 @@ b.d.exploratory.correlations <- function(){
   cat("Correlations plotted\n")
 }
 
-#' @title BBBBBB
+#' @title Exploratory - Dimension Visualization
 #' @description
 #'
 #' @author Vitali Friesen

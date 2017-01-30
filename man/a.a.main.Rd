@@ -58,6 +58,8 @@ Each of clickable listing elements are functions in the package which have a spe
 A separate project documentation was foregone to avoid duplicate documentation. Therefore this documentation is extended to take that into account.
 
 The naming convention with LETTER.LETTER.FUNCTIONNAME has solely the purpose to ensure the correct ordering of the functions in the generated pdf of the documentation which was done by roxygen2. Otherwise the order of function and project descriptions may not follow the linear process of the steps and makes the understanding more difficult.
+
+It executes just one function: \code{\link{a.b.main.spambase.analysis}}
 }
 \author{
 Vitali Friesen
