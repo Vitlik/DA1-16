@@ -40,7 +40,6 @@ d.a.outlier_handle <- function(spambase.scaled){
 #' Then the function draws a graphic to illustrate where those outliers are actually positioned compared to
 #' the regular data.
 #' @author Lijin Lan (construct of function and documentation)
-
 d.b.outlier_detection <- function(spambase.scaled){
   # inspect whether there are raws with only zeros
   sum(apply(spambase.scaled,1,mean)==0)

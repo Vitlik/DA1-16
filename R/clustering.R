@@ -44,7 +44,7 @@ f.b.hierarchical <- function(spambase.scaled.out){
   methods = c("single","ward.D")
   opar = par(mfrow = c(1,2))
   sapply(methods, function(method) {
-    res.clust = hclust(dist(spambase.scaled.out), method = methods)
+    res.clust = hclust(dist(spambase.scaled.out), method = method)
     plot(res.clust, main = sprintf("method: %s", method))
   })
   par(opar)
