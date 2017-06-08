@@ -184,7 +184,7 @@ c.e.norm_transform <- function(){
 #' to on the same scale.
 c.f.scaling<-function(){
   # scale the data with the function scale
-  spambase.scaled<-scale(spambase[1:57], center=TRUE, scale=TRUE)
+  spambase.scaled<-scale(spambase[,1:57], center=TRUE, scale=TRUE)
   # convert the result into a dataframe
   spambase.scaled<-data.frame(spambase.scaled)
   return(spambase.scaled)
